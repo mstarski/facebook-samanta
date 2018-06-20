@@ -22,7 +22,7 @@ class Samanta {
       axios
         .post(url, this.postData)
         .then(response => {
-          console.log(response.json());
+          console.log(response);
         })
         .catch(error => console.log(error.message));
     }
