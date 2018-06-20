@@ -17,36 +17,56 @@ function sendFacebookMessage(data) {
 //Bot class
 class Samanta {
   constructor() {
-    this.postData = {
+    this.postDataText = {
       messaging_type: "RESPONSE",
       recipient: {
-        id: "1687230281331060"
+        id: ""
       },
       message: {
         text: ''
       }
     };
+    this.postDataImg = {
+      messaging_type: "RESPONSE",
+      recipient:{
+        id:""
+      },
+      message:{
+        attachment:{
+          type:"image", 
+          payload:{
+            url:"", 
+            is_reusable:true
+          }
+        }
+      }
+    }
   }
 
   //Answer with facebook message depending on user wish
   answer(text, senderId) {
     //Set sender id
-    this.postData.recipient.id = senderId;
+    this.postDataText.recipient.id = senderId;
     //Say Hello
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
-      this.postData.message.text = 'Witaj';
-      sendFacebookMessage(this.postData);
+      this.postDataText.message.text = 'Witaj';
+      sendFacebookMessage(this.postDataText);
     }
     //Get Date
     else if (actions.DATE.indexOf(formattedText) >= 0) {
-      this.postData.message.text = moment().format('MMMM Do YYYY, h:mm:ss a');
-      sendFacebookMessage(this.postData);
+      this.postDataText.message.text = moment().format('MMMM Do YYYY, h:mm:ss a');
+      sendFacebookMessage(this.postDataText);
+    }
+    //Show a random cat
+    else if (actions.CATS.indexOf(formattedText) >= 0) {
+      this.postDataImg.payload.url = "http://thecatapi.com/api/images/get?api_key=MzMwMTA4";
+      sendFacebookMessage(this.postDataImg);
     }
     //Wrong command
     else {
-      this.postData.message.text = 'Nie rozumiem :(';
-      sendFacebookMessage(this.postData);
+      this.postDataText.message.text = 'Nie rozumiem :(';
+      sendFacebookMessage(this.postDataText);
     }
   }
 }

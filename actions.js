@@ -15,7 +15,8 @@ const actions = {
         "podaj date",
         "jaki mamy dzień"
     ],
-    HELP: ["help", "pomoc"]
+    HELP: ["help", "pomoc"],
+    CATS: ["pokaż kota", "kot"]
 }
 
 module.exports = actions;
