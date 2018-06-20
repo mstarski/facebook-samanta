@@ -1,6 +1,7 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
+const Samanta = require('./Samanta');
 
 //Middleware
 app.use(bodyParser.json());
@@ -28,16 +29,17 @@ app.post('/webhook', (req, res) => {
         // Gets the message. entry.messaging is an array, but 
         // will only ever contain one message, so we get index 0
         let webhook_event = entry.messaging[0];
-        console.log(webhook_event.message.text);
+        let text = webhook_event.message.text;
+        console.log(text);
+        const Samanta = new Samanta();
+        Samanta.answer(text);
       });
-  
       // Returns a '200 OK' response to all requests
       res.status(200).send('EVENT_RECEIVED');
     } else {
       // Returns a '404 Not Found' if event is not from a page subscription
       res.sendStatus(404);
     }
-  
   });
 
 http.listen(process.env.PORT || 8080, console.log('Listening ...'));
