@@ -18,7 +18,6 @@ app.post('/webhook', (req, res) => {
   let challenge = req.query['hub.challenge'];
  
     let body = req.body;
-    console.log(body);
   
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
@@ -40,5 +39,9 @@ app.post('/webhook', (req, res) => {
     }
   
   });
+
+  app.get('/webhook', (req, res) => {
+      res.status(200).send(req.query['hub.challenge']);
+  })
 
 http.listen(process.env.PORT || 8080, console.log('Listening ...'));
