@@ -47,6 +47,7 @@ class Samanta {
   answer(text, senderId) {
     //Set sender id
     this.postDataText.recipient.id = senderId;
+    this.postDataImg.recipient.id = senderId;
     //Say Hello
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
@@ -60,7 +61,7 @@ class Samanta {
     }
     //Show a random cat
     else if (actions.CATS.indexOf(formattedText) >= 0) {
-      this.postDataImg.message.attachment.payload.url = "http://www.messenger-rocks.com/image.jpg";
+      this.postDataImg.message.attachment.payload.url = "http://thecatapi.com/api/images/get?api_key=MzMwMTA4";
       sendFacebookMessage(this.postDataImg);
     }
     //Wrong command
