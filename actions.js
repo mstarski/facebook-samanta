@@ -16,7 +16,8 @@ const actions = {
         "jaki mamy dzień"
     ],
     HELP: ["help", "pomoc"],
-    CATS: ["pokaż kota", "kot"]
+    CATS: ["pokaż kota", "kot"],
+    DOGS: ["pokaż psa", "pies"]
 }
 
 module.exports = actions;

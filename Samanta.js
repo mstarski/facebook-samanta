@@ -64,6 +64,11 @@ class Samanta {
       this.postDataImg.message.attachment.payload.url = "http://thecatapi.com/api/images/get?api_key=MzMwMTA4";
       sendFacebookMessage(this.postDataImg);
     }
+    //Show a random dog
+    else if (actions.DOGS.findIndex(formattedText) >= 0) {
+      this.postDataImg.message.attachment.payload.url = "https://cdn.thedogapi.com/images/S1o87r2az.jpeg";
+      sendFacebookMessage(this.postDataImg);
+    }
     //Wrong command
     else {
       this.postDataText.message.text = 'Nie rozumiem :(';
