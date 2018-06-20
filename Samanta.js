@@ -32,10 +32,10 @@ class Samanta {
     axios
       .post(url, postData)
       .then(response => {
-        console.log(response);
+        console.log(response.json());
 
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.json()));
   }
 }
 
