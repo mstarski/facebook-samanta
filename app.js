@@ -31,8 +31,8 @@ app.post('/webhook', (req, res) => {
         let webhook_event = entry.messaging[0];
         let text = webhook_event.message.text;
         console.log(text);
-        const Samanta = new Samanta();
-        Samanta.answer(text);
+        const Sam = new Samanta();
+        Sam.answer(text);
       });
       // Returns a '200 OK' response to all requests
       res.status(200).send('EVENT_RECEIVED');
