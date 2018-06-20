@@ -28,7 +28,7 @@ app.post('/webhook', (req, res) => {
         // Gets the message. entry.messaging is an array, but 
         // will only ever contain one message, so we get index 0
         let webhook_event = entry.messaging[0];
-        console.log(webhook_event);
+        console.log(webhook_event.message.text);
       });
   
       // Returns a '200 OK' response to all requests
@@ -39,9 +39,5 @@ app.post('/webhook', (req, res) => {
     }
   
   });
-
-  app.get('/webhook', (req, res) => {
-      res.status(200).send(req.query['hub.challenge']);
-  })
 
 http.listen(process.env.PORT || 8080, console.log('Listening ...'));
