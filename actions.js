@@ -14,7 +14,8 @@ const actions = {
         "data",
         "podaj date",
         "jaki mamy dzień"
-    ]
+    ],
+    HELP: ["help", "pomoc"]
 }
 
 module.exports = actions;
