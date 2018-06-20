@@ -50,6 +50,7 @@ class Samanta {
         for(let command of actions[key]){
           this.postData.message.txt += `${command} \n`;
         }
+      });
       sendFacebookMessage(this.postData);
     }
     //Wrong command
