@@ -18,7 +18,7 @@ class Samanta {
   }
 
   answer(text) {
-    if (this.HELLO.indexOf(text) >= 0) {
+    if (this.HELLO.indexOf(text.toLowerCase()) >= 0) {
       const postData = {
         messaging_type: "RESPONSE",
         recipient: {
