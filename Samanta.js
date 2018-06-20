@@ -18,7 +18,7 @@ class Samanta {
   }
 
   answer(text) {
-    postData = {
+    const postData = {
       messaging_type: "text",
       recipient: {
         id: "1687230281331060"
@@ -33,6 +33,7 @@ class Samanta {
       .post(url, postData)
       .then(response => {
         console.log(response);
+
       })
       .catch(error => console.log(error));
   }
