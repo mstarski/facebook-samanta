@@ -13,7 +13,7 @@ class Samanta {
   }
 
 
-  answer = (text) => {
+  answer(text){
     switch (text) {
       case this.HELLO.indexOf(text) !== -1:
       postData = {
