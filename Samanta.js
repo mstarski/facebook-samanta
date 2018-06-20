@@ -18,8 +18,9 @@ class Samanta {
   }
 
   answer(text) {
+    console.log(this.HELLO.indexOf(text));
     switch (text) {
-      case this.HELLO.indexOf(text) !== -1:
+      case this.HELLO.indexOf(text) > 0:
         const postData = {
           messaging_type: "RESPONSE",
           recipient: {
