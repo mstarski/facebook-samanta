@@ -31,10 +31,10 @@ app.post('/webhook', (req, res) => {
         let webhook_event = entry.messaging[0];
         let text = webhook_event.message.text;
         console.log(text);
-        const Sam = new Samanta();
-        Sam.answer(text);
       });
       // Returns a '200 OK' response to all requests
+      const Sam = new Samanta();
+      Sam.answer(text);
       res.status(200).send('EVENT_RECEIVED');
     } else {
       // Returns a '404 Not Found' if event is not from a page subscription
