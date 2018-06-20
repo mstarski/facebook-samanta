@@ -30,15 +30,18 @@ class Samanta {
 
   //Answer with facebook message depending on user wish
   answer(text) {
+    //Say Hello
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
       this.postData.message.text = 'Witaj';
       sendFacebookMessage(this.postData);
     }
+    //Get Date
     else if (actions.DATE.indexOf(formattedText) >= 0) {
       this.postData.message.text = moment().format('MMMM Do YYYY, h:mm:ss a');
       sendFacebookMessage(this.postData);
     }
+    //Wrong command
     else {
       this.postData.message.text = 'Nie rozumiem :(';
       sendFacebookMessage(this.postData);
