@@ -1,7 +1,7 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
-const Samanta = require('./Samanta');
+import Samanta from './Samanta';
 
 //Middleware
 app.use(bodyParser.json());
