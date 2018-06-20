@@ -16,14 +16,13 @@ function sendFacebookMessage(data) {
 //Bot class
 class Samanta {
   constructor() {
-    this.responseMessage = '';
     this.postData = {
       messaging_type: "RESPONSE",
       recipient: {
         id: "1687230281331060"
       },
       message: {
-        text: this.responseMessage
+        text: ''
       }
     };
   }
@@ -32,15 +31,15 @@ class Samanta {
   answer(text) {
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
-      this.responseMessage = 'Witaj';
+      this.postData.message.text = 'Witaj';
       sendFacebookMessage(this.postData);
     }
     else if (actions.DATE.indexOf(formattedText) >= 0) {
-      this.responseMessage = Date.now().toString();
+      this.postData.message.text = Date.now().toString();
       sendFacebookMessage(this.postData);
     }
     else {
-      this.responseMessage = 'Nie rozumiem :(';
+      this.postData.message.text = 'Nie rozumiem :(';
       sendFacebookMessage(this.postData);
     }
   }
