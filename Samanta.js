@@ -25,4 +25,4 @@ class Samanta {
   };
 }
 
-export default Samanta;
+module.exports = Samanta;
