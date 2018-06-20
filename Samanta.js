@@ -1,13 +1,18 @@
-import * as answers from "./answerTypes";
-import axios from "axios";
+const axios = require('axios');
 
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 class Samanta {
 
+  HELLO = [
+    'czesc', 'cześć', 'cześc', 'czesć',
+    'witaj', 'hi', 'hello', 'hello there',
+    'hey'
+  ]
+
   answer = (text) => {
     switch (text) {
-      case answers.HELLO.indexOf(text) !== -1:
+      case this.HELLO.indexOf(text) !== -1:
       postData = {
         messaging_type: "text",
         recipient: {
