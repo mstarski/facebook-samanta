@@ -43,16 +43,6 @@ class Samanta {
       this.postData.message.text = moment().format('MMMM Do YYYY, h:mm:ss a');
       sendFacebookMessage(this.postData);
     }
-    //Help
-    else if (actions.HELP.indexOf(formattedText) >= 0) {
-      this.postData.message.text = `Dostępne komendy: \n`;
-      Object.keys(actions).map(key => {
-        for(let command of actions[key]){
-          this.postData.message.txt += `${command} \n`;
-        }
-      });
-      sendFacebookMessage(this.postData);
-    }
     //Wrong command
     else {
       this.postData.message.text = 'Nie rozumiem :(';
