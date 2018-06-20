@@ -31,10 +31,10 @@ app.post('/webhook', (req, res) => {
         // Gets the message. entry.messaging is an array, but 
         // will only ever contain one message, so we get index 0
         let webhook_event = entry.messaging[0];
-        console.log(webhook_event);
+        let senderId = webhook_event.sender.id;
         let text = webhook_event.message.text;
         console.log(text);
-        Sam.answer(text);
+        Sam.answer(text, senderId);
       });
       // Returns a '200 OK' response to all requests
       res.status(200).send('EVENT_RECEIVED');

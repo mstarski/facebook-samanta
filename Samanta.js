@@ -29,7 +29,9 @@ class Samanta {
   }
 
   //Answer with facebook message depending on user wish
-  answer(text) {
+  answer(text, senderId) {
+    //Set sender id
+    this.postData.recipient.id = senderId;
     //Say Hello
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
