@@ -35,7 +35,7 @@ class Samanta {
         console.log(response.json());
 
       })
-      .catch(error => console.log(error.json()));
+      .catch(error => console.log(error.message));
   }
 }
 
