@@ -1,5 +1,6 @@
 const axios = require("axios");
 const actions = require("./actions");
+const moment = require("moment");
 
 //Set header for the request
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -35,7 +36,7 @@ class Samanta {
       sendFacebookMessage(this.postData);
     }
     else if (actions.DATE.indexOf(formattedText) >= 0) {
-      this.postData.message.text = Date.now().toString();
+      this.postData.message.text = moment().format('MMMM Do YYYY, h:mm:ss a');
       sendFacebookMessage(this.postData);
     }
     else {
