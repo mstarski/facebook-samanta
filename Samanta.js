@@ -60,7 +60,7 @@ class Samanta {
     }
     //Show a random cat
     else if (actions.CATS.indexOf(formattedText) >= 0) {
-      this.postDataImg.payload.url = "http://thecatapi.com/api/images/get?api_key=MzMwMTA4";
+      this.postDataImg.message.attachment.payload.url = "http://thecatapi.com/api/images/get?api_key=MzMwMTA4";
       sendFacebookMessage(this.postDataImg);
     }
     //Wrong command
