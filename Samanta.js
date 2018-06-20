@@ -1,35 +1,24 @@
 const axios = require("axios");
+const actions = require("./actions");
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 class Samanta {
   constructor() {
-    this.HELLO = [
-      "czesc",
-      "cześć",
-      "cześc",
-      "czesć",
-      "witaj",
-      "hi",
-      "hello",
-      "hello there",
-      "hey"
-    ];
+    this.postData = {
+      messaging_type: "RESPONSE",
+      recipient: {
+        id: "1687230281331060"
+      },
+      message: {
+        text: "Witaj"
+      }
+    };
   }
 
   answer(text) {
-    if (this.HELLO.indexOf(text.toLowerCase()) >= 0) {
-      const postData = {
-        messaging_type: "RESPONSE",
-        recipient: {
-          id: "1687230281331060"
-        },
-        message: {
-          text: "hello, world!"
-        }
-      };
-      const url =
-        "https://graph.facebook.com/v2.6/me/messages?access_token=EAAGSikKKJqwBAFsNqmG0zWGSsP1ZBqfKHQ984pcZAR5nwv8AHCXNav5AFQSs4YOShZAEfkJR1vEZABTD6QuWN2wKwuQxnDU6V7TYBX9x9ApPoZBSpqbTZAAOabQg4HmsTIOrZBKjZBMZChj0RRJKZAH3ogDTZBZCXwYJjlIAFNEmTEYmlZAnZCwAKOtf1v";
+    if (actions.HELLO.indexOf(text.toLowerCase()) >= 0) {
+      const url = "https://graph.facebook.com/v2.6/me/messages?access_token=EAAGSikKKJqwBAFsNqmG0zWGSsP1ZBqfKHQ984pcZAR5nwv8AHCXNav5AFQSs4YOShZAEfkJR1vEZABTD6QuWN2wKwuQxnDU6V7TYBX9x9ApPoZBSpqbTZAAOabQg4HmsTIOrZBKjZBMZChj0RRJKZAH3ogDTZBZCXwYJjlIAFNEmTEYmlZAnZCwAKOtf1v";
       axios
         .post(url, postData)
         .then(response => {
