@@ -19,6 +19,7 @@ class Samanta {
 
     submit(data) {
         axios.post(this.url, data)
+            .response(response => console.log('Message sent ' + data.message.text ))
             .catch(error => console.log(error))
     }
 
@@ -30,20 +31,20 @@ class Samanta {
             this.submit(this.postTextMessage);
         }
 
-        if (actions.DATE.indexOf(text) >= 0) {
+        else if (actions.DATE.indexOf(text) >= 0) {
             const date = timezone.tz('Europe/Warsaw').format('MMMM Do YYYY, h:mm:ss a');
             this.postTextMessage.message.text = date;
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
 
-        if (actions.CATS.indexOf(text) >= 0) {
+        else if (actions.CATS.indexOf(text) >= 0) {
             this.postAttachmentMessage.recipient.id = senderId;
             this.postAttachmentMessage.message.attachment.payload.url = 'http://thecatapi.com/api/images/get?api_key=MzMwMTA4';
             this.submit(this.postAttachmentMessage);
         }
 
-        if (actions.DOGS.indexOf(text) >= 0) {
+        else if (actions.DOGS.indexOf(text) >= 0) {
             this.postAttachmentMessage.recipient.id = senderId;
             this.postAttachmentMessage.message.attachment.payload.url = 'https://api.thedogapi.com/v1/images/search?format=src&mime_types=image';
             this.submit(this.postAttachmentMessage);
