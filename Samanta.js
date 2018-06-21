@@ -2,6 +2,7 @@ const actions = require('./actions');
 const messageTypes = require('./messageTypes');
 const axios = require('axios');
 const timezone = require('moment-timezone');
+const moment = require('moment');
 
 class Samanta {
     constructor() {
