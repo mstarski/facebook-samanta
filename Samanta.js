@@ -65,7 +65,7 @@ class Samanta {
       sendFacebookMessage(this.postDataImg);
     }
     //Show a random dog
-    else if (actions.DOGS.findIndex(formattedText) >= 0) {
+    else if (actions.DOGS.indexOf(formattedText) >= 0) {
       this.postDataImg.message.attachment.payload.url = "https://api.thedogapi.com/v1/images/search?format=src&mime_types=image/jpg";
       sendFacebookMessage(this.postDataImg);
     }
