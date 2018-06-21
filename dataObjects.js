@@ -24,16 +24,25 @@ module.exports = {
     }
   },
   postDataLocalization: {
-    recipient: {
-      id: "<PSID>"
+    recipient:{
+      id:""
     },
-    message: {
-      text: "Here is a quick reply!",
-      quick_replies: [
-        {
-          content_type: "location"
+    message:{
+      attachment:{
+        type:"template",
+        payload:{
+          template_type:"button",
+          text:"Try the URL button!",
+          buttons:[
+            {
+              type:"web_url",
+              url:"https://www.messenger.com/",
+              title:"URL Button",
+              webview_height_ratio: "full"
+            }
+          ]
         }
-      ]
+      }
     }
   }
 };
