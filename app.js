@@ -35,7 +35,21 @@ app.post('/webhook', (req, res) => {
         let text = webhook_event.message.text;
         console.log(webhook_event);
         console.log(text);
-        Sam.answer(text, senderId);
+        const data = {
+          messaging_type: "RESPONSE",
+          recipient: {
+            id: ""
+          },
+          message: {
+            text: ""
+        }
+      }
+        const url = "https://graph.facebook.com/v2.6/me/messages?access_token=EAAGSikKKJqwBAFsNqmG0zWGSsP1ZBqfKHQ984pcZAR5nwv8AHCXNav5AFQSs4YOShZAEfkJR1vEZABTD6QuWN2wKwuQxnDU6V7TYBX9x9ApPoZBSpqbTZAAOabQg4HmsTIOrZBKjZBMZChj0RRJKZAH3ogDTZBZCXwYJjlIAFNEmTEYmlZAnZCwAKOtf1v";
+        axios
+          .post(url, data)
+          .then(response => console.log('Message sent back! ' + data.message.text))
+          .catch(error => console.log(error.message));
+        // Sam.answer(text, senderId);
       });
       // Returns a '200 OK' response to all requests
       res.status(200).send('EVENT_RECEIVED');
