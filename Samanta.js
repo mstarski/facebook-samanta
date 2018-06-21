@@ -19,7 +19,7 @@ class Samanta {
 
     submit(data) {
         axios.post(this.url, data)
-            .response(response => console.log('Message sent ' + data.message.text ))
+            .then(response => console.log('Message sent ' + data.message.text ))
             .catch(error => console.log(error))
     }
 
