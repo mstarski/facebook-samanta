@@ -32,8 +32,8 @@ class Samanta {
         }
 
         if(actions.DATE.indexOf(text) >= 0) {
-            const time = timezone.tz('Europe/Warsaw').format();
-            this.postTextMessage.message.text = moment().format('MMMM Do YYYY ' + time);
+            const date = timezone.tz('Europe/Warsaw').format('MMMM Do YYYY, h:mm:ss a');
+            this.postTextMessage.message.text = date;
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
