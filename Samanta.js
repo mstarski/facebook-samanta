@@ -1,7 +1,6 @@
 const actions = require('./actions');
 const messageTypes = require('./messageTypes');
 const axios = require('axios');
-const moment = require('moment');
 const timezone = require('moment-timezone');
 
 class Samanta {
@@ -31,11 +30,17 @@ class Samanta {
             this.submit(this.postTextMessage);
         }
 
-        if(actions.DATE.indexOf(text) >= 0) {
+        if (actions.DATE.indexOf(text) >= 0) {
             const date = timezone.tz('Europe/Warsaw').format('MMMM Do YYYY, h:mm:ss a');
             this.postTextMessage.message.text = date;
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
+        }
+
+        if (actions.CATS.indexOf(text) >= 0) {
+            this.postAttachmentMessage.recipient.id = senderId;
+            this.postAttachmentMessage.message.attachment.payload.url = 'http://thecatapi.com/api/images/get?api_key=MzMwMTA4';
+            this.submit(this.postAttachmentMessage);
         }
 
         else {
