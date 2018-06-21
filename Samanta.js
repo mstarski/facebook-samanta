@@ -15,18 +15,18 @@ function sendFacebookMessage(data) {
     .catch(error => console.log(error.message));
 }
 
-function getWeather(city, data) {
-  const apiKey = 'f022880c42f02c49e961189f1b0bcdad';
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f022880c42f02c49e961189f1b0bcdad`
-  sendFacebookMessage(data);
-}
+// function getWeather(city, data) {
+//   const apiKey = 'f022880c42f02c49e961189f1b0bcdad';
+//   const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f022880c42f02c49e961189f1b0bcdad`
+//   sendFacebookMessage(data);
+// }
 
 //Bot class
 class Samanta {
   constructor() {
     this.postDataText = dataObjects.postDataText;
     this.postDataImg = dataObjects.postDataImg;
-    this.postDataLocalization = dataObjects.postDataLocalization;
+    // this.postDataLocalization = dataObjects.postDataLocalization;
   }
 
   //Answer with facebook message depending on user wish
@@ -34,7 +34,7 @@ class Samanta {
     //Set sender id
     this.postDataText.recipient.id = senderId;
     this.postDataImg.recipient.id = senderId;
-    this.postDataLocalization.recipient.id = senderId;
+    // this.postDataLocalization.recipient.id = senderId;
     //Say Hello
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
@@ -56,10 +56,10 @@ class Samanta {
       this.postDataImg.message.attachment.payload.url = "https://api.thedogapi.com/v1/images/search?format=src&mime_types=image/jpg";
       sendFacebookMessage(this.postDataImg);
     }
-    //Weather
-    else if (actions.WEATHER.indexOf(formattedText) >= 0) {
-      getWeather(null,this.postDataLocalization);
-    }
+    // //Weather
+    // else if (actions.WEATHER.indexOf(formattedText) >= 0) {
+    //   getWeather(null,this.postDataLocalization);
+    // }
     //Wrong command
     else {
       this.postDataText.message.text = 'Nie rozumiem :(';
