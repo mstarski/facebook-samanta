@@ -16,8 +16,8 @@ const actions = {
         "jaki mamy dzień"
     ],
     HELP: ["help", "pomoc"],
-    CATS: ["pokaż kota", "kot"],
-    DOGS: ["pokaż psa", "pies"],
+    CATS: ["pokaż kota", "kot", "pokaz kota",],
+    DOGS: ["pokaż psa", "pies", "pokaz psa"],
     WEATHER: [
         "pogoda", 
         "pokaż pogodę", 
