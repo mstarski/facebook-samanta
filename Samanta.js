@@ -31,7 +31,7 @@ class Samanta {
         }
 
         if(actions.DATE.indexOf(text) >= 0) {
-            this.postTextMessage.message.text = moment().format('MMMM Do YYYY, h:mm:ss a');
+            this.postTextMessage.message.text = moment().format('MMMM Do YYYY, h:mm:ss a + 2:00');
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
