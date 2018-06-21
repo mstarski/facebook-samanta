@@ -15,10 +15,10 @@ function sendFacebookMessage(data) {
     .catch(error => console.log(error.message));
 }
 
-function getWeather(city) {
+function getWeather(city, data) {
   const apiKey = 'f022880c42f02c49e961189f1b0bcdad';
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f022880c42f02c49e961189f1b0bcdad`
-  sendFacebookMessage(this.postDataLocalization);
+  sendFacebookMessage(data);
 }
 
 //Bot class
@@ -58,7 +58,7 @@ class Samanta {
     }
     //Weather
     else if (actions.WEATHER.indexOf(formattedText) >= 0) {
-      getWeather();
+      getWeather(null,this.postDataLocalization);
     }
     //Wrong command
     else {
