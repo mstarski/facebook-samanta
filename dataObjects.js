@@ -44,5 +44,18 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  // local: {
+  //   "recipient":{
+  //     "id":"1687230281331060"
+  //   },
+  //   "message":{
+  //     "text": "Here is a quick reply!",
+  //     "quick_replies":[
+  //       {
+  //         "content_type":"location"
+  //       }
+  //     ]
+  //   }
+  // }
 };
