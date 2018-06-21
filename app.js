@@ -1,12 +1,10 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
-const Samanta = require('./Samanta');
 const axios = require('axios');
 //Middleware
 app.use(bodyParser.json());
 
-const Sam = new Samanta();
 
 
 // Creates the endpoint for our webhook 
@@ -35,7 +33,6 @@ app.post('/webhook', (req, res) => {
         let text = webhook_event.message.text;
         console.log(webhook_event);
         console.log(text);
-        Sam.answer(text, senderId);
       });
       // Returns a '200 OK' response to all requests
       res.status(200).send('EVENT_RECEIVED');
