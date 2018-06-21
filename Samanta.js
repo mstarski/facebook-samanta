@@ -25,13 +25,13 @@ class Samanta {
         if (actions.HELLO.indexOf(text) >= 0) {
             this.postTextMessage.message.text = 'Witaj ^_^';
             this.postTextMessage.recipient.id = senderId;
-            submit(this.postTextMessage);
+            this.submit(this.postTextMessage);
         }
 
         else {
             this.postTextMessage.message.text = 'Nie rozumiem :(';
             this.postTextMessage.recipient.id = senderId;
-            submit(this.postTextMessage);
+            this.submit(this.postTextMessage);
         }
     }
 
