@@ -26,28 +26,28 @@ class Samanta {
 
     sendFacebookMessage(text, senderId){
 
-        const formattedTest = text.trim().replace(/\s+/g, " ");
+        const formattedText = text.trim().replace(/\s+/g, " ");
 
-        if (actions.HELLO.indexOf(text) >= 0) {
+        if (actions.HELLO.indexOf(formattedText) >= 0) {
             this.postTextMessage.message.text = 'Witaj ^_^';
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
 
-        else if (actions.DATE.indexOf(text) >= 0) {
+        else if (actions.DATE.indexOf(formattedText) >= 0) {
             const date = timezone.tz('Europe/Warsaw').format('MMMM Do YYYY, h:mm:ss a');
             this.postTextMessage.message.text = date;
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
 
-        else if (actions.CATS.indexOf(text) >= 0) {
+        else if (actions.CATS.indexOf(formattedText) >= 0) {
             this.postAttachmentMessage.recipient.id = senderId;
             this.postAttachmentMessage.message.attachment.payload.url = 'http://thecatapi.com/api/images/get?api_key=MzMwMTA4';
             this.submit(this.postAttachmentMessage);
         }
 
-        else if (actions.DOGS.indexOf(text) >= 0) {
+        else if (actions.DOGS.indexOf(formattedText) >= 0) {
             this.postAttachmentMessage.recipient.id = senderId;
             this.postAttachmentMessage.message.attachment.payload.url = 'https://api.thedogapi.com/v1/images/search?format=src&mime_types=image';
             this.submit(this.postAttachmentMessage);
