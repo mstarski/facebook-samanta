@@ -15,7 +15,8 @@ const Sam = new Samanta();
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
 
-  const url = Sam.url;
+  const pageAccessToken = 'EAAGSikKKJqwBADZABJwZCzOf99f4aohdd8z8bSUfJlxD3yGNRgo95XGf8GZB27ZBumyRwBZCIZAMwfdNZA1eVDv9shPs3rNLzjNkytVxtetEMNZCrdM3qP8sXX0aS2APdV3C5FAM3T3UjbyIFk9yQL4en12xfTZANQgVVOdjJTklhbRGsZCUiyHuKo';
+  const url = `https://graph.facebook.com/v2.6/me/messages?access_token=${pageAccessToken}`;
   axios.post(url, messageTypes.markedSeen)
     .then(response => console.log(response))
     .error(error => console.log(error));
