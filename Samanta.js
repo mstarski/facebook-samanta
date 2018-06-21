@@ -1,6 +1,7 @@
 const axios = require("axios");
 const actions = require("./actions");
 const moment = require("moment");
+const dataObjects = require('./dataObjects');
 
 //Set header for the request
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -17,30 +18,8 @@ function sendFacebookMessage(data) {
 //Bot class
 class Samanta {
   constructor() {
-    this.postDataText = {
-      messaging_type: "RESPONSE",
-      recipient: {
-        id: ""
-      },
-      message: {
-        text: ''
-      }
-    };
-    this.postDataImg = {
-      messaging_type: "RESPONSE",
-      recipient:{
-        id:""
-      },
-      message:{
-        attachment:{
-          type:"image", 
-          payload:{
-            url:"", 
-            is_reusable:true
-          }
-        }
-      }
-    }
+    this.postDataText = dataObjects.postDataText;
+    this.postDataImg = dataObjects.postDataImg;
   }
 
   //Answer with facebook message depending on user wish
