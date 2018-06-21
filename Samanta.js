@@ -15,11 +15,19 @@ function sendFacebookMessage(data) {
     .catch(error => console.log(error.message));
 }
 
+function getWeather(city) {
+  this.postDataLocalization.recipient.id = senderId;
+  const apiKey = 'f022880c42f02c49e961189f1b0bcdad';
+  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f022880c42f02c49e961189f1b0bcdad`
+  sendFacebookMessage(this.postDataLocalization);
+}
+
 //Bot class
 class Samanta {
   constructor() {
     this.postDataText = dataObjects.postDataText;
     this.postDataImg = dataObjects.postDataImg;
+    this.postDataLocalization = dataObjects.postDataLocalization;
   }
 
   //Answer with facebook message depending on user wish
@@ -47,6 +55,10 @@ class Samanta {
     else if (actions.DOGS.indexOf(formattedText) >= 0) {
       this.postDataImg.message.attachment.payload.url = "https://api.thedogapi.com/v1/images/search?format=src&mime_types=image/jpg";
       sendFacebookMessage(this.postDataImg);
+    }
+    //Weather
+    else if (actions.WEATHER.indexOf(formattedText) >= 0) {
+      getWeather();
     }
     //Wrong command
     else {
