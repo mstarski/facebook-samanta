@@ -2,6 +2,7 @@ const actions = require('./actions');
 const messageTypes = require('./messageTypes');
 const axios = require('axios');
 const moment = require('moment');
+const timezone = require('moment-timezone');
 
 class Samanta {
     constructor() {
@@ -31,7 +32,8 @@ class Samanta {
         }
 
         if(actions.DATE.indexOf(text) >= 0) {
-            this.postTextMessage.message.text = moment().format('MMMM Do YYYY, h:mm:ss a + 2:00');
+            const time = timezone.tz('Europe/Warsaw').format();
+            this.postTextMessage.message.text = moment().format('MMMM Do YYYY ' + time);
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
