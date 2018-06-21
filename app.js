@@ -34,6 +34,7 @@ app.post('/webhook', (req, res) => {
         let senderId = webhook_event.sender.id;
         let text = webhook_event.message.text;
         console.log(webhook_event);
+        console.log(webhook_event.message.attachments[0]);
         console.log(text);
         Sam.answer(text, senderId);
       });
