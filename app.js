@@ -2,10 +2,10 @@ const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const Samanta = require('./Samanta');
+
 //Middleware
 app.use(bodyParser.json());
-
-
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
@@ -33,6 +33,12 @@ app.post('/webhook', (req, res) => {
         let text = webhook_event.message.text;
         console.log(webhook_event);
         console.log(text);
+
+        //Create Samanta Object that will response to user requests
+
+        const Sam = new Samanta();
+        Sam.sendFacebookMessage(text, senderId);
+
       });
       // Returns a '200 OK' response to all requests
       res.status(200).send('EVENT_RECEIVED');
