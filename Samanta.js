@@ -25,6 +25,8 @@ class Samanta {
 
 
     sendFacebookMessage(text, senderId){
+
+
         if (actions.HELLO.indexOf(text) >= 0) {
             this.postTextMessage.message.text = 'Witaj ^_^';
             this.postTextMessage.recipient.id = senderId;

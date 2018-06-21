@@ -8,7 +8,12 @@ const actions = {
         "hi",
         "hello",
         "hello there",
-        "hey"
+        "hey",
+        "hej",
+        "siema",
+        "siemano",
+        "siemanko",
+        "gitara siema"
       ],
     DATE: [
         "data",
