@@ -16,7 +16,6 @@ function sendFacebookMessage(data) {
 }
 
 function getWeather(city) {
-  this.postDataLocalization.recipient.id = senderId;
   const apiKey = 'f022880c42f02c49e961189f1b0bcdad';
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f022880c42f02c49e961189f1b0bcdad`
   sendFacebookMessage(this.postDataLocalization);
@@ -35,6 +34,7 @@ class Samanta {
     //Set sender id
     this.postDataText.recipient.id = senderId;
     this.postDataImg.recipient.id = senderId;
+    this.postDataLocalization.recipient.id = senderId;
     //Say Hello
     const formattedText = text.toLowerCase().trim().replace(/\s\s+/g, ' ');
     if (actions.HELLO.indexOf(formattedText) >= 0) {
