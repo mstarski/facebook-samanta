@@ -18,7 +18,9 @@ const actions = {
     DATE: [
         "data",
         "podaj date",
-        "jaki mamy dzień"
+        "podaj datę",
+        "jaki mamy dzień",
+        "jaki mamy dzien"
     ],
     HELP: ["help", "pomoc"],
     CATS: ["pokaż kota", "kot", "pokaz kota",],

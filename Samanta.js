@@ -26,6 +26,7 @@ class Samanta {
 
     sendFacebookMessage(text, senderId){
 
+        const formattedTest = text.trim().replace(/\s+/g, " ");
 
         if (actions.HELLO.indexOf(text) >= 0) {
             this.postTextMessage.message.text = 'Witaj ^_^';
