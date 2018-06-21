@@ -44,6 +44,12 @@ class Samanta {
             this.submit(this.postAttachmentMessage);
         }
 
+        if (actions.DOGS.indexOf(text) >= 0) {
+            this.postAttachmentMessage.recipient.id = senderId;
+            this.postAttachmentMessage.message.attachment.payload.url = 'https://api.thedogapi.com/v1/images/search?format=src&mime_types=image';
+            this.submit(this.postAttachmentMessage);
+        }
+
         else {
             this.postTextMessage.message.text = 'Nie rozumiem :(';
             this.postTextMessage.recipient.id = senderId;
