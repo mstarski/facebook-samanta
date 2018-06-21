@@ -33,6 +33,7 @@ app.post('/webhook', (req, res) => {
         let webhook_event = entry.messaging[0];
         let senderId = webhook_event.sender.id;
         let text = webhook_event.message.text;
+        console.log(webhook_event);
         console.log(text);
         Sam.answer(text, senderId);
       });
