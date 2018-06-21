@@ -15,12 +15,6 @@ const Sam = new Samanta();
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
 
-  const pageAccessToken = 'EAAGSikKKJqwBADZABJwZCzOf99f4aohdd8z8bSUfJlxD3yGNRgo95XGf8GZB27ZBumyRwBZCIZAMwfdNZA1eVDv9shPs3rNLzjNkytVxtetEMNZCrdM3qP8sXX0aS2APdV3C5FAM3T3UjbyIFk9yQL4en12xfTZANQgVVOdjJTklhbRGsZCUiyHuKo';
-  const url = `https://graph.facebook.com/v2.6/me/messages?access_token=${pageAccessToken}`;
-  axios.post(url, messageTypes.markedSeen)
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
-
   // Your verify token. Should be a random string.
   let VERIFY_TOKEN = "AFD8A4099F482899C738F919D9AA58A985B9C742F4650CF8D68B483FAF5AC084A2D605393A5BFD646B46F5A787155EE8DD233CA15A4882C619BB6912201E567E"
     

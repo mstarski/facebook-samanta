@@ -19,7 +19,6 @@ class Samanta {
 
     submit(data) {
         axios.post(this.url, data)
-            .then(response => console.log(response))
             .catch(error => console.log(error))
     }
 
