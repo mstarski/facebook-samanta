@@ -88,11 +88,11 @@ class Samanta {
                 console.log(response.data);
                 const location = response.data.name;
                 const weather = response.data.weather[0].description;
-                const temp = response.data.main.temp;
+                const temp = (response.data.main.temp-273.16).toFixed(0);
                 const pressure = response.data.main.pressure;
                 const humidity = response.data.main.humidity;
-                const tempMin = response.data.main.temp_min;
-                const tempMax = response.data.main.temp_max;
+                const tempMin = (response.data.main.temp_min-273.16).toFixed(0);
+                const tempMax = (response.data.main.temp_max-273.16).toFixed(0);
                 //vars
                 console.log(location, weather, temp-273.16, pressure, humidity, tempMin-273.16, tempMax-273.16);
 
