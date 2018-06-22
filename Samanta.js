@@ -57,7 +57,10 @@ class Samanta {
         else {
             this.postTextMessage.message.text = 'Nie rozumiem :(';
             this.postTextMessage.recipient.id = senderId;
+            this.postAttachmentMessage.recipient.id = senderId;
+            this.postAttachmentMessage.message.attachment.payload.url = stickerUrls.messageUnknown.url;
             this.submit(this.postTextMessage);
+            this.submit(this.postAttachmentMessage);
         }
     }
 
