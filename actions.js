@@ -34,6 +34,9 @@ const actions = {
     ],
     LS: [
         "ls"
+    ],
+    MATRIX: [
+        "macierz"
     ]
 }
 

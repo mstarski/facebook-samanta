@@ -72,6 +72,11 @@ class Samanta {
                 this.submit(this.postTextMessage);
             })
         }
+        else if (actions.MATRIX.indexOf(formattedText.substring(0,7)) >= 0) {
+            this.postTextMessage.recipient.id = senderId;
+            this.postTextMessage.message.text = "Wkrótce ją policze !";
+            this.submit(this.postTextMessage);
+        }
 
         else {
             console.log(formattedText.substring(0,7));
