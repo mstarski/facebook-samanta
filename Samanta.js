@@ -74,6 +74,7 @@ class Samanta {
         }
 
         else {
+            console.log(formattedText.substring(0,6));
             this.messageUnknown(senderId);
         }
     }
