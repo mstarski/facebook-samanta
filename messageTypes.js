@@ -43,5 +43,18 @@ module.exports = {
         }
       }
     }
+  },
+  localizationRequest: {
+    "recipient":{
+      "id":"<PSID>"
+    },
+    "message":{
+      "text": "Gdzie jesteś ?",
+      "quick_replies":[
+        {
+          "content_type":"location"
+        }
+      ]
+    }
   }
 };

@@ -42,14 +42,18 @@ app.post('/webhook', (req, res) => {
           console.log(webhook_event);
           console.log(text);
   
-          try {
-            Sam.sendFacebookMessage(text, senderId);
-          }catch(e) {
-            console.log(e.message);
-          }
+          Sam.sendFacebookMessage(text, senderId);
         }
         else if (attachments[0].payload.url) {
           Sam.sendSticker(senderId);
+        }
+
+        else if (attachments[0].type === 'location') {
+          console.log(attachments[0].payload.coordinates);
+        }
+
+        else {
+          Sam.messageUnknown(senderId);
         }
     
 

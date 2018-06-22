@@ -15,6 +15,7 @@ class Samanta {
         this.postTypingOff = messageTypes.typingOff;
         this.postTextMessage = messageTypes.textMessage;
         this.postAttachmentMessage = messageTypes.attachmentMessage;
+        this.postLocalizationRequest = messageTypes.localizationRequest;
     }
 
 
@@ -54,14 +55,23 @@ class Samanta {
             this.submit(this.postAttachmentMessage);
         }
 
-        else {
-            this.postTextMessage.message.text = 'Nie rozumiem :(';
-            this.postTextMessage.recipient.id = senderId;
-            this.postAttachmentMessage.recipient.id = senderId;
-            this.postAttachmentMessage.message.attachment.payload.url = stickerUrls.messageUnknown.url;
-            this.submit(this.postTextMessage);
-            this.submit(this.postAttachmentMessage);
+        else if (actions.WEATHER.indexOf(formattedText) >= 0) {
+            this.localizationRequest.recipient.id = senderId;
+            this.submit(this.localizationRequest);
         }
+
+        else {
+            this.messageUnknown(senderId);
+        }
+    }
+
+    messageUnknown(senderId) {
+        this.postTextMessage.message.text = 'Nie rozumiem :(';
+        this.postTextMessage.recipient.id = senderId;
+        this.postAttachmentMessage.recipient.id = senderId;
+        this.postAttachmentMessage.message.attachment.payload.url = stickerUrls.messageUnknown.url;
+        this.submit(this.postTextMessage);
+        this.submit(this.postAttachmentMessage);
     }
 
     sendSticker(senderId) {
