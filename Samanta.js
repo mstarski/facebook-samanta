@@ -56,8 +56,8 @@ class Samanta {
         }
 
         else if (actions.WEATHER.indexOf(formattedText) >= 0) {
-            this.localizationRequest.recipient.id = senderId;
-            this.submit(this.localizationRequest);
+            this.postLocalizationRequest.recipient.id = senderId;
+            this.submit(this.postLocalizationRequest);
         }
 
         else {
