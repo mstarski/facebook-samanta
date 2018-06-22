@@ -69,7 +69,7 @@ class Samanta {
                 }
                 this.postTextMessage.recipient.id = senderId;
                 this.postTextMessage.message.text = stdout;
-                submit(this.postTextMessage);
+                this.submit(this.postTextMessage);
             })
         }
 
