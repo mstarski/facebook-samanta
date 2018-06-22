@@ -24,6 +24,8 @@ app.post('/webhook', (req, res) => {
   let challenge = req.query['hub.challenge'];
  
     let body = req.body;
+
+    console.log(body);
   
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
