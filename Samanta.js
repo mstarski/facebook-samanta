@@ -86,6 +86,15 @@ class Samanta {
         axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=f022880c42f02c49e961189f1b0bcdad&lang=pl`)
             .then(response => {
                 console.log(response.data);
+                const location = response.data.name;
+                const weather = response.data.weather[0].description;
+                const temp = response.data.main.temp;
+                const pressure = response.data.main.pressure;
+                const humidity = response.data.main.humidity;
+                const tempMin = response.data.main.temp_min;
+                const tempMax = response.data.main.temp_max;
+
+                console.log(location, weather, temp, pressure, humidity, tempMin, tempMax);
                 // this.postTextMessage.message.text = response.main.temp;
                 // this.submit(this.postTextMessage);
             })
