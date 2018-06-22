@@ -93,7 +93,7 @@ class Samanta {
                 const humidity = response.data.main.humidity;
                 const tempMin = response.data.main.temp_min;
                 const tempMax = response.data.main.temp_max;
-
+                //vars
                 console.log(location, weather, temp-273.16, pressure, humidity, tempMin-273.16, tempMax-273.16);
                 // this.postTextMessage.message.text = response.main.temp;
                 // this.submit(this.postTextMessage);
