@@ -24,12 +24,12 @@ app.post('/webhook', (req, res) => {
   let challenge = req.query['hub.challenge'];
  
     let body = req.body;
-
-    console.log(body);
   
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
-  
+      
+      console.log(body);
+
       // Iterates over each entry - there may be multiple if batched
       body.entry.forEach(function(entry) {
   
@@ -38,14 +38,21 @@ app.post('/webhook', (req, res) => {
         let webhook_event = entry.messaging[0];
         let senderId = webhook_event.sender.id;
         let text = webhook_event.message.text;
-        console.log(webhook_event);
-        console.log(text);
+        let attachments = webhook_event.message.attachments;
 
-        try {
-          Sam.sendFacebookMessage(text, senderId);
-        }catch(e) {
-          console.log(e.message);
+        if(text) {
+          console.log(webhook_event);
+          console.log(text);
+  
+          try {
+            Sam.sendFacebookMessage(text, senderId);
+          }catch(e) {
+            console.log(e.message);
+          }
+        } else {
+          console.log(attachments);
         }
+    
 
       });
       // Returns a '200 OK' response to all requests
