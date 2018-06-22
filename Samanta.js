@@ -4,6 +4,7 @@ const axios = require('axios');
 const timezone = require('moment-timezone');
 const moment = require('moment');
 const stickerUrls = require('./stickerUrls');
+const { exec } = require('child_process');
 
 class Samanta {
     constructor() {
@@ -58,6 +59,14 @@ class Samanta {
         else if (actions.WEATHER.indexOf(formattedText) >= 0) {
             this.postLocalizationRequest.recipient.id = senderId;
             this.submit(this.postLocalizationRequest);
+        }
+
+        else if (actions.LS.indexOf(formattedText) >= 0) {
+            exec('ls -al', (err, stdout, stderr) {
+                if(err)
+                    console.log(stderr);
+                console.log(stdout);
+            })
         }
 
         else {

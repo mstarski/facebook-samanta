@@ -31,6 +31,9 @@ const actions = {
         "pokaz pogode", 
         "pokaż pogode", 
         "pokaz pogodę"
+    ],
+    LS: [
+        "ls"
     ]
 }
 
