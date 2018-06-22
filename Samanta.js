@@ -62,7 +62,7 @@ class Samanta {
         }
 
         else if (actions.LS.indexOf(formattedText) >= 0) {
-            exec('ls -al', (err, stdout, stderr) {
+            exec('ls -al', (err, stdout, stderr) => {
                 if(err)
                     console.log(stderr);
                 console.log(stdout);
