@@ -27,8 +27,6 @@ app.post('/webhook', (req, res) => {
   
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
-      
-      console.log(body);
 
       // Iterates over each entry - there may be multiple if batched
       body.entry.forEach(function(entry) {
@@ -50,7 +48,7 @@ app.post('/webhook', (req, res) => {
             console.log(e.message);
           }
         } else {
-          console.log(attachments.payload.url);
+          console.log(attachments);
         }
     
 
