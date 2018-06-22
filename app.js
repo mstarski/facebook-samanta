@@ -48,7 +48,7 @@ app.post('/webhook', (req, res) => {
             console.log(e.message);
           }
         } else {
-          console.log(attachments);
+          console.log(attachments[0].payload.url);
         }
     
 
