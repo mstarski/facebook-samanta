@@ -3,6 +3,7 @@ const messageTypes = require('./messageTypes');
 const axios = require('axios');
 const timezone = require('moment-timezone');
 const moment = require('moment');
+const stickerUrls = require('./stickerUrls');
 
 class Samanta {
     constructor() {
@@ -23,7 +24,7 @@ class Samanta {
             .catch(error => console.log(error))
     }
 
-    
+
     sendFacebookMessage(text, senderId){
 
         const formattedText = text.toLowerCase().trim().replace(/\s+/g, " ");
@@ -58,6 +59,13 @@ class Samanta {
             this.postTextMessage.recipient.id = senderId;
             this.submit(this.postTextMessage);
         }
+    }
+
+    sendSticker(senderId) {
+        const randomNumber = Math.floor(Math.random() * stickerUrls.stickers.length);
+        this.postAttachmentMessage.recipient.id = senderId;
+        this.postAttachmentMessage.message.attachment.payload.url = stickerUrls.stickers[randomNumber].url;
+        this.submit(this.postAttachmentMessage);
     }
 
 }

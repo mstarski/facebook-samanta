@@ -47,8 +47,9 @@ app.post('/webhook', (req, res) => {
           }catch(e) {
             console.log(e.message);
           }
-        } else {
-          console.log(attachments[0].payload.url);
+        }
+        else if (attachments[0].payload.url) {
+          Sam.sendSticker(senderId);
         }
     
 
