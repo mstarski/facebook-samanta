@@ -81,6 +81,13 @@ class Samanta {
         this.submit(this.postAttachmentMessage);
     }
 
+    sendWeather(senderId, lat, long) {
+        this.postTextMessage.recipient.id = senderId;
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=f022880c42f02c49e961189f1b0bcdad`)
+            .then(response => this.postTextMessage.message.text = JSON.stringify(response))
+            .catch(error => console.log(error))
+        this.submit(this.postTextMessage);
+    }
 }
 
 module.exports = Samanta;

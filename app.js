@@ -50,6 +50,9 @@ app.post('/webhook', (req, res) => {
 
         else if (attachments[0].type === 'location') {
           console.log(attachments[0].payload.coordinates);
+          const lat = (attachments[0].payload.coordinates.lat)
+          const long = (attachments[0].payload.coordinates.long);
+          Sam.sendWeather(senderId, lat, long);
         }
 
         else {
