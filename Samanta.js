@@ -23,7 +23,7 @@ class Samanta {
             .catch(error => console.log(error))
     }
 
-
+    
     sendFacebookMessage(text, senderId){
 
         const formattedText = text.toLowerCase().trim().replace(/\s+/g, " ");

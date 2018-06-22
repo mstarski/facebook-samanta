@@ -39,7 +39,11 @@ app.post('/webhook', (req, res) => {
         console.log(webhook_event);
         console.log(text);
 
-        Sam.sendFacebookMessage(text, senderId);
+        try {
+          Sam.sendFacebookMessage(text, senderId);
+        }catch(e) {
+          console.log(e.message);
+        }
 
       });
       // Returns a '200 OK' response to all requests
