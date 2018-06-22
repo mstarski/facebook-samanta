@@ -93,15 +93,12 @@ class Samanta {
                 const humidity = response.data.main.humidity;
                 const tempMin = (response.data.main.temp_min-273.16).toFixed(0);
                 const tempMax = (response.data.main.temp_max-273.16).toFixed(0);
-                //vars
-                console.log(location, weather, temp-273.16, pressure, humidity, tempMin-273.16, tempMax-273.16);
-
                 this.postTextMessage.message.text = `W ${location} jest obecnie ${weather}
-                Temperatura: ${temp}
+                Temperatura: ${temp} stopni
                 Ciśnienie: ${pressure}
                 Wiglgotność: ${humidity}
-                Temperatura minimalna: ${tempMin}
-                Temperatura maksymalna: ${tempMax}`
+                Temperatura minimalna: ${tempMin} stopni
+                Temperatura maksymalna: ${tempMax} stopni`
                 this.submit(this.postTextMessage);
             })
             .catch(error => console.log(error))
