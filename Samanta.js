@@ -63,9 +63,13 @@ class Samanta {
 
         else if (actions.LS.indexOf(formattedText) >= 0) {
             exec('ls -al', (err, stdout, stderr) => {
-                if(err)
+                if(err){
                     console.log(stderr);
-                console.log(stdout);
+                    return;
+                }
+                this.postTextMessage.recipient.id = senderId;
+                this.postTextMessage.message.text = stdout;
+                submit(this.postTextMessage);
             })
         }
 
