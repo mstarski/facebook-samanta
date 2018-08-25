@@ -22,7 +22,7 @@ class Samanta {
 
     submit(data) {
         axios.post(this.url, data)
-            .then(response => console.log('Message sent ' + data.message.text ))
+            .then(() => console.log('Message sent ' + data.message.text ))
             .catch(error => console.log(error))
     }
 
@@ -75,6 +75,12 @@ class Samanta {
         else if (actions.MATRIX.indexOf(formattedText.substring(0,7)) >= 0) {
             this.postTextMessage.recipient.id = senderId;
             this.postTextMessage.message.text = "Wkrótce ją policze !";
+            this.submit(this.postTextMessage);
+        }
+
+        else if(action.ZDITM.indexOf(formattedText) >= 0) {
+            this.postTextMessage.recipient.id = senderId;
+            this.postTextMessage.message.text = "Autobus test";
             this.submit(this.postTextMessage);
         }
 
