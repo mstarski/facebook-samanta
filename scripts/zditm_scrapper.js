@@ -14,9 +14,9 @@ function getSchedule(stop_name, line) {}
 module.exports = props => {
 	const params = props.replace(/\s/g, "");
 	let request = new Object();
-	console.log(params.substring(4, 6));
+	console.log(params.substring(3, 6));
 
-	if (typeof params.substring(4, 6) !== "number") {
+	if (typeof parseInt(params.substring(3, 6)) !== "NaN") {
 		return "Podany numer linii jest błędny!";
 	}
 
