@@ -9,10 +9,17 @@ const stopsIds = {
 	"Plac Rodla": 65,
 };
 
+function getSchedule(stop_name, line) {}
+
 module.exports = props => {
 	const params = props.replace(/\s/g, "");
 	let request = new Object();
 	console.log(params);
+
+	if (typeof params.substring(4, 6) !== "number") {
+		return "Podany numer linii jest błędny!";
+	}
+
 	if (params.indexOf("sow") !== -1) {
 		return "Kusocinskiego";
 	}
@@ -28,4 +35,5 @@ module.exports = props => {
 	if (params.indexOf("rod") !== -1) {
 		return "Plac Rodla";
 	}
+	return "Nie wykryto połączenia";
 };
