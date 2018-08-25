@@ -9,7 +9,14 @@ const stopsIds = {
 	"Plac Rodla": 65,
 };
 
-function getSchedule(stop_name, line) {}
+function getSchedule(stop_name, line) {
+    axios.get(`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${line},${stop_name}`)
+    .then(response => {
+        const $ = cheerio.load(response.data);
+        
+    })
+
+}
 
 module.exports = props => {
 	const params = props.replace(/\s/g, "");
@@ -18,7 +25,7 @@ module.exports = props => {
 
 	console.log(isNaN(parseInt(params.substring(3, 6))));
 
-	if (isNaN(parseInt(params.substring(3, 6)))) {
+	if (isNaN(parseInt(params.substring(3)))) {
 		return "Podany numer linii jest błędny!";
 	}
 

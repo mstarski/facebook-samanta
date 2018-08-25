@@ -18,6 +18,7 @@ class Samanta {
         this.postTextMessage = messageTypes.textMessage;
         this.postAttachmentMessage = messageTypes.attachmentMessage;
         this.postLocalizationRequest = messageTypes.localizationRequest;
+        this.postList = messageTypes.list;
     }
 
 
@@ -80,9 +81,11 @@ class Samanta {
         }
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
-            this.postTextMessage.recipient.id = senderId;
-            this.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
-            this.submit(this.postTextMessage);
+            // this.postTextMessage.recipient.id = senderId;
+            // this.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
+            // this.submit(this.postTextMessage);
+            this.postList.recipient.id = senderId;
+            this.submit(this.postList);
         }
 
         else {
