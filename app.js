@@ -1,7 +1,6 @@
 const app = require("express")();
 const http = require("http").Server(app);
 const bodyParser = require("body-parser");
-const axios = require("axios");
 const Samanta = require("./Samanta");
 const sendWeather = require("./scripts/sendWeather");
 

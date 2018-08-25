@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 module.exports = (senderId, lat, long, samanta) => {
 	samanta.postTextMessage.recipient.id = senderId;
 	axios
