@@ -1,10 +1,11 @@
-const actions = require('./actions');
-const messageTypes = require('./messageTypes');
+const actions = require('./definitions/actions');
+const messageTypes = require('./definitions/messageTypes');
 const axios = require('axios');
 const timezone = require('moment-timezone');
 const moment = require('moment');
 const stickerUrls = require('./stickerUrls');
 const { exec } = require('child_process');
+const zditm_scrapper = require('./scripts/zditm_scrapper');
 
 class Samanta {
     constructor() {
@@ -78,9 +79,10 @@ class Samanta {
             this.submit(this.postTextMessage);
         }
 
-        else if(actions.ZDITM.indexOf(formattedText) >= 0) {
+        else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
             this.postTextMessage.recipient.id = senderId;
             this.postTextMessage.message.text = "Autobus test";
+            zditm_scrapper(formattedText.substring(5));
             this.submit(this.postTextMessage);
         }
 
