@@ -1,5 +1,5 @@
-module.exports = (senderId, lat, long) => {
-	this.postTextMessage.recipient.id = senderId;
+module.exports = (senderId, lat, long, samanta) => {
+	samanta.postTextMessage.recipient.id = senderId;
 	axios
 		.get(
 			`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=f022880c42f02c49e961189f1b0bcdad&lang=pl`
@@ -13,13 +13,13 @@ module.exports = (senderId, lat, long) => {
 			const humidity = response.data.main.humidity;
 			const tempMin = (response.data.main.temp_min - 273.16).toFixed(0);
 			const tempMax = (response.data.main.temp_max - 273.16).toFixed(0);
-			this.postTextMessage.message.text = `W ${location} jest obecnie ${weather}
+			samanta.postTextMessage.message.text = `W ${location} jest obecnie ${weather}
             Temperatura: ${temp} stopni
             Ciśnienie: ${pressure}
             Wiglgotność: ${humidity}
             Temperatura minimalna: ${tempMin} stopni
             Temperatura maksymalna: ${tempMax} stopni`;
-			this.submit(this.postTextMessage);
+			samanta.submit(samanta.postTextMessage);
 		})
 		.catch(error => console.log(error));
 };
