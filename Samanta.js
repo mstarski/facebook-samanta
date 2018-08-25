@@ -81,8 +81,7 @@ class Samanta {
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
             this.postTextMessage.recipient.id = senderId;
-            this.postTextMessage.message.text = "Autobus test";
-            zditm_scrapper(formattedText.substring(5));
+            this.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
             this.submit(this.postTextMessage);
         }
 
