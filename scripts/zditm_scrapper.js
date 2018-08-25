@@ -16,7 +16,7 @@ module.exports = props => {
 	let request = new Object();
 	console.log(params.substring(3, 6));
 
-	console.log(typeof parseInt(params.substring(3, 6)));
+	console.log(isNan(parseInt(params.substring(3, 6))));
 
 	if (isNan(parseInt(params.substring(3, 6)))) {
 		return "Podany numer linii jest błędny!";
