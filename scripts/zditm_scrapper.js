@@ -13,19 +13,19 @@ module.exports = props => {
 	const params = props.replace(/\s/g, "");
 	let request = new Object();
 	console.log(params);
-	if (params.indexOf("sow") >= -1) {
+	if (params.indexOf("sow") !== -1) {
 		return "Kusocinskiego";
 	}
-	if (params.indexOf("swo") >= -1) {
+	if (params.indexOf("swo") !== -1) {
 		return "Swolezerow";
 	}
-	if (params.indexOf("dgl") >= -1) {
+	if (params.indexOf("dgl") !== -1) {
 		return "Dworzec Glowny";
 	}
-	if (params.indexOf("bpo") >= -1) {
+	if (params.indexOf("bpo") !== -1) {
 		return "Brama Portowa";
 	}
-	if (params.indexOf("rod") >= -1) {
+	if (params.indexOf("rod") !== -1) {
 		return "Plac Rodla";
 	}
 };
