@@ -3,7 +3,7 @@ const http = require("http").Server(app);
 const bodyParser = require("body-parser");
 const axios = require("axios");
 const Samanta = require("./Samanta");
-const messageTypes = require("./definitions/messageTypes");
+const sendWeather = require("./scripts/sendWeather");
 
 //Middleware
 app.use(bodyParser.json());
@@ -47,7 +47,7 @@ app.post("/webhook", (req, res) => {
 				console.log(attachments[0].payload.coordinates);
 				const lat = attachments[0].payload.coordinates.lat;
 				const long = attachments[0].payload.coordinates.long;
-				Sam.sendWeather(senderId, lat, long);
+				sendWeather(senderId, lat, long);
 			} else {
 				Sam.messageUnknown(senderId);
 			}
