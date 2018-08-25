@@ -47,7 +47,7 @@ app.post("/webhook", (req, res) => {
 				console.log(attachments[0].payload.coordinates);
 				const lat = attachments[0].payload.coordinates.lat;
 				const long = attachments[0].payload.coordinates.long;
-				sendWeather(senderId, lat, long);
+				sendWeather(senderId, lat, long, Sam);
 			} else {
 				Sam.messageUnknown(senderId);
 			}
