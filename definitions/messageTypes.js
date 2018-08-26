@@ -57,45 +57,4 @@ module.exports = {
 			],
 		},
 	},
-	list: {
-		recipient: {
-			id: "RECIPIENT_ID",
-		},
-		message: {
-			attachment: {
-				type: "template",
-				payload: {
-					template_type: "list",
-					top_element_style: "compact",
-					elements: [
-						{
-							title: "Classic T-Shirt Collection",
-							subtitle: "See all our colors",
-							image_url:
-								"https://www.zditm.szczecin.pl/img/min2/1496075437.png",
-							buttons: [
-								{
-									title: "View",
-									type: "web_url",
-									url:
-										"https://peterssendreceiveapp.ngrok.io/collection",
-									messenger_extensions: true,
-									webview_height_ratio: "tall",
-									fallback_url:
-										"https://peterssendreceiveapp.ngrok.io/",
-								},
-							],
-						},
-					],
-					buttons: [
-						{
-							title: "View More",
-							type: "postback",
-							payload: "payload",
-						},
-					],
-				},
-			},
-		},
-	},
 };

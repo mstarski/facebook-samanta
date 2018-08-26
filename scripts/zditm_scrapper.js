@@ -1,21 +1,25 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const zditm_ids = require("../definitions/zditm_ids");
 
-const stopsIds = {
-	Sowinskiego: 367,
-	Swolezerow: 301,
-	"Dworzec Glowny": 344,
-	"Brama Portowa": 29,
-	"Plac Rodla": 65,
-};
+function zditm_scrap(stop_name, line_number) {
+	const stopId = zditm_ids.stops_ids[stop_name];
+	const line_number = zditm_ids.line_ids[line_number];
 
-function getSchedule(stop_name, line) {
-    axios.get(`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${line},${stop_name}`)
-    .then(response => {
-        const $ = cheerio.load(response.data);
-        
-    })
-
+	axios
+		.get(
+			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
+		)
+		.then(response => {
+			const $ = cheerio.load(response.data);
+			return (
+				$("p")
+					.eq(6)
+					.text() +
+				"\n" +
+				$("#najkursxhr").text()
+			);
+		});
 }
 
 module.exports = props => {
@@ -23,14 +27,12 @@ module.exports = props => {
 	let request = new Object();
 	console.log(params.substring(3, 6));
 
-	console.log(isNaN(parseInt(params.substring(3, 6))));
-
 	if (isNaN(parseInt(params.substring(3)))) {
 		return "Podany numer linii jest błędny!";
 	}
 
 	if (params.indexOf("sow") !== -1) {
-		return "Kusocinskiego";
+		return "Kusocinskiego" + params.substring(3);
 	}
 	if (params.indexOf("swo") !== -1) {
 		return "Swolezerow";
