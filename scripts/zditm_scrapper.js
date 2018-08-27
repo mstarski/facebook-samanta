@@ -3,26 +3,34 @@ const cheerio = require("cheerio");
 const zditm_ids = require("../definitions/zditm_ids");
 
 function zditm_scrap(stop_name, line_number, self, senderId) {
-	const stopId = zditm_ids.stops_ids[stop_name][0];
+	const stopId = zditm_ids.stops_ids[stop_name];
 	const lineId = zditm_ids.line_ids[line_number];
 
-	axios
-		.get(
-			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
-		)
-		.then(response => {
-			const $ = cheerio.load(response.data, {
-				normalizeWhitespace: true,
+	function getSchedule(index) {
+		axios
+			.get(
+				`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${
+					stopId[index]
+				}`
+			)
+			.then(response => {
+				const $ = cheerio.load(response.data, {
+					normalizeWhitespace: true,
+				});
+				const direction = $("p")
+					.eq(6)
+					.text();
+				const departure = $("#najkursxhr").text();
+				console.log(`${direction} \n${departure}`);
+				return `${direction} \n${departure}`;
 			});
-			const direction = $("p")
-				.eq(6)
-				.text();
-			const departure = $("#najkursxhr").text();
-			console.log(`${direction} \n${departure}`);
-			return `${direction} \n${departure}`;
-		})
-		.then(result => {
-			self.postTextMessage.message.text = result;
+	}
+
+	axios
+		.all([getSchedule(0), getSchedule(1)])
+		.then((firstStop, secondStop) => {
+			const message = `${firstStop}\n${secondStop}`;
+			self.postTextMessage.message.text = message;
 			self.postTextMessage.recipient.id = senderId;
 			self.submit(self.postTextMessage);
 		});
