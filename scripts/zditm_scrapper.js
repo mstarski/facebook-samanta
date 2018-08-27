@@ -45,6 +45,8 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 module.exports = (props, self, senderId) => {
 	const params = props.replace(/\s/g, "");
 
+	console.log(params.length);
+
 	if (params.length === 0) {
 		const message = JSON.stringify(zditm_ids.help, null, 2);
 		send(`Lista przystanków:\n${message}`, self, senderId);
