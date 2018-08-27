@@ -27,7 +27,6 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 
 	axios.all([getSchedule(0), getSchedule(1)]).then(
 		axios.spread((firstStop, secondStop) => {
-			console.log(firstStop, secondStop);
 			const message = `${firstStop}\n${secondStop}`;
 			self.postTextMessage.message.text = message;
 			self.postTextMessage.recipient.id = senderId;
@@ -38,7 +37,6 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 
 module.exports = (props, self, senderId) => {
 	const params = props.replace(/\s/g, "");
-	console.log(params.substring(3, 6));
 
 	const line = params.substring(3, 6);
 
