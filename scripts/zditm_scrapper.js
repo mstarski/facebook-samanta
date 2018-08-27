@@ -2,6 +2,12 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const zditm_ids = require("../definitions/zditm_ids");
 
+function send(message, self) {
+	self.postTextMessage.message.text = message;
+	self.postTextMessage.recipient.id = senderId;
+	self.submit(self.postTextMessage);
+}
+
 function zditm_scrap(stop_name, line_number, self, senderId) {
 	const stopId = zditm_ids.stops_ids[stop_name];
 	const lineId = zditm_ids.line_ids[line_number];
@@ -31,9 +37,7 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 	axios.all([getSchedule(0), getSchedule(1)]).then(
 		axios.spread((firstStop, secondStop) => {
 			const message = `${firstStop}\n${secondStop}`;
-			self.postTextMessage.message.text = message;
-			self.postTextMessage.recipient.id = senderId;
-			self.submit(self.postTextMessage);
+			send(message, self);
 		})
 	);
 }
@@ -43,17 +47,13 @@ module.exports = (props, self, senderId) => {
 
 	if (params.length === 0) {
 		const message = JSON.stringify(zditm_ids.help, null, 2);
-		self.postTextMessage.message.text = `Lista przystanków:\n${message}`;
-		self.postTextMessage.recipient.id = senderId;
-		self.submit(self.postTextMessage);
+		send(`Lista przystanków:\n${message}`, self);
 	}
 
 	const line = params.substring(3, 6);
 
 	if (isNaN(parseInt(line))) {
-		self.postTextMessage.message.text = "Podany numer linii jest błędny!";
-		self.postTextMessage.recipient.id = senderId;
-		self.submit(self.postTextMessage);
+		send("Podany numer linii jest błędny!", self);
 	}
 
 	switch (params.substring(0, 3)) {
@@ -73,8 +73,6 @@ module.exports = (props, self, senderId) => {
 			zditm_scrap("Plac Rodla", line, self, senderId);
 			break;
 		default:
-			self.postTextMessage.message.text = "Nie wykryto połączenia :(";
-			self.postTextMessage.recipient.id = senderId;
-			self.submit(self.postTextMessage);
+			send("Nie wykryto połączenia :(");
 	}
 };
