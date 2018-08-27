@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 const zditm_ids = require("../definitions/zditm_ids");
 
 function zditm_scrap(stop_name, line_number) {
-	const stopId = zditm_ids.stops_ids[stop_name];
+	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
 	return `https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`;
