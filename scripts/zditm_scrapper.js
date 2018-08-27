@@ -33,20 +33,18 @@ module.exports = props => {
 		return "Podany numer linii jest błędny!";
 	}
 
-	if (params.indexOf("sow") !== -1) {
-		zditm_scrap("Sowinskiego", line);
+	switch (params.indexOf) {
+		case "sow":
+			zditm_scrap("Sowinskiego", line);
+		case "swo":
+			zditm_scrap("Swolezerow", line);
+		case "dgl":
+			zditm_scrap("Dworzec Glowny", line);
+		case "bpo":
+			zditm_scrap("Brama Portowa", line);
+		case "rod":
+			zditm_scrap("Plac Rodla", line);
+		default:
+			return "Nie wykryto połączenia";
 	}
-	if (params.indexOf("swo") !== -1) {
-		return "Swolezerow";
-	}
-	if (params.indexOf("dgl") !== -1) {
-		return "Dworzec Glowny";
-	}
-	if (params.indexOf("bpo") !== -1) {
-		return "Brama Portowa";
-	}
-	if (params.indexOf("rod") !== -1) {
-		return "Plac Rodla";
-	}
-	return "Nie wykryto połączenia";
 };

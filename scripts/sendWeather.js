@@ -7,7 +7,6 @@ module.exports = (senderId, lat, long, samanta) => {
 			`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=f022880c42f02c49e961189f1b0bcdad&lang=pl`
 		)
 		.then(response => {
-			console.log(response.data);
 			const location = response.data.name;
 			const weather = response.data.weather[0].description;
 			const temp = (response.data.main.temp - 273.16).toFixed(0);
