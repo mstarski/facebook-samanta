@@ -14,13 +14,14 @@ function zditm_scrap(stop_name, line_number) {
 		)
 		.then(response => {
 			const $ = cheerio.load(response.data);
-			return (
+			console.log(
 				$("p")
 					.eq(6)
 					.text() +
-				"\n" +
-				$("#najkursxhr").text()
+					"\n" +
+					$("#najkursxhr").text()
 			);
+			return "a";
 		});
 }
 
