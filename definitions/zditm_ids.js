@@ -28,5 +28,6 @@ module.exports = {
 		"Brama Portowa": "bpo",
 		"Plac Rodla": "rod",
 		"Dworzec Glowny": "dgl",
+		Poniatowskiego: "pon",
 	},
 };
