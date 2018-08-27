@@ -33,7 +33,9 @@ module.exports = props => {
 		return "Podany numer linii jest błędny!";
 	}
 
-	switch (params.substring(0, 4)) {
+	console.log(params.substring(0, 3));
+
+	switch (params.substring(0, 3)) {
 		case "sow":
 			zditm_scrap("Sowinskiego", line);
 		case "swo":
