@@ -38,14 +38,19 @@ module.exports = props => {
 	switch (params.substring(0, 3)) {
 		case "sow":
 			zditm_scrap("Sowinskiego", line);
+			break;
 		case "swo":
 			zditm_scrap("Swolezerow", line);
+			break;
 		case "dgl":
 			zditm_scrap("Dworzec Glowny", line);
+			break;
 		case "bpo":
 			zditm_scrap("Brama Portowa", line);
+			break;
 		case "rod":
 			zditm_scrap("Plac Rodla", line);
+			break;
 		default:
 			return "Nie wykryto połączenia";
 	}
