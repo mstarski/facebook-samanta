@@ -6,9 +6,7 @@ function zditm_scrap(stop_name, line_number) {
 	const stopId = zditm_ids.stops_ids[stop_name];
 	const lineId = zditm_ids.line_ids[line_number];
 
-	console.log(
-		`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
-	);
+	return `https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`;
 
 	// axios
 	// 	.get(
