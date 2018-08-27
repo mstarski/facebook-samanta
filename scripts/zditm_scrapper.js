@@ -6,23 +6,22 @@ function zditm_scrap(stop_name, line_number) {
 	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
-	// return `https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`;
+	return `https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`;
 
-	axios
-		.get(
-			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
-		)
-		.then(response => {
-			const $ = cheerio.load(response.data);
-			console.log(
-				$("p")
-					.eq(6)
-					.text() +
-					"\n" +
-					$("#najkursxhr").text()
-			);
-			return "a";
-		});
+	// axios
+	// 	.get(
+	// 		`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
+	// 	)
+	// 	.then(response => {
+	// 		const $ = cheerio.load(response.data);
+	// 		return (
+	// 			$("p")
+	// 				.eq(6)
+	// 				.text() +
+	// 			"\n" +
+	// 			$("#najkursxhr").text()
+	// 		);
+	// 	});
 }
 
 module.exports = props => {
