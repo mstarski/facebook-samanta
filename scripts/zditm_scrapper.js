@@ -18,11 +18,8 @@ function zditm_scrap(stop_name, line_number) {
 				.eq(6)
 				.text();
 			const departure = $("#najkursxhr").text();
-			return `${direction} \n ${departure}`;
-		})
-		.then(result => {
-			console.log(result);
-			return result;
+			console.log(`${direction} \n${departure}`);
+			return `${direction} \n${departure}`;
 		});
 }
 
