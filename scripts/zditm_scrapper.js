@@ -42,7 +42,8 @@ module.exports = (props, self, senderId) => {
 	const params = props.replace(/\s/g, "");
 
 	if (params.length === 0) {
-		self.postTextMessage.message.text = "Lista przystanków";
+		const message = JSON.stringify(zditm_ids.stops_ids, null, 2);
+		self.postTextMessage.message.text = `Lista przystanków:\n${message}`;
 		self.postTextMessage.recipient.id = senderId;
 		self.submit(self.postTextMessage);
 	}
