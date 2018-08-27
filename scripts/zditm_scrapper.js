@@ -18,9 +18,9 @@ function zditm_scrap(stop_name, line_number) {
 				.eq(6)
 				.text()} 
 			${$("#najkursxhr").text()}`);
-			return "a";
 		}
 	);
+	return "a";
 }
 
 module.exports = props => {
