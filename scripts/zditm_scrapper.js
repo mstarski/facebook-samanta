@@ -46,6 +46,7 @@ module.exports = (props, self, senderId) => {
 		self.postTextMessage.message.text = `Lista przystanków:\n${message}`;
 		self.postTextMessage.recipient.id = senderId;
 		self.submit(self.postTextMessage);
+		return;
 	}
 
 	const line = params.substring(3, 6);
