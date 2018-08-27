@@ -20,7 +20,10 @@ function zditm_scrap(stop_name, line_number) {
 			const departure = $("#najkursxhr").text();
 			return `${direction} \n ${departure}`;
 		})
-		.then(result => result);
+		.then(result => {
+			console.log(result);
+			return result;
+		});
 }
 
 module.exports = props => {
