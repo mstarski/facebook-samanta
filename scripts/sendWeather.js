@@ -15,12 +15,7 @@ module.exports = (senderId, lat, long, samanta) => {
 			const humidity = response.data.main.humidity;
 			const tempMin = (response.data.main.temp_min - 273.16).toFixed(0);
 			const tempMax = (response.data.main.temp_max - 273.16).toFixed(0);
-			samanta.postTextMessage.message.text = `W *${location}* jest obecnie *${weather}*
-            Temperatura: *${temp} stopni*
-            Ciśnienie: *${pressure}*
-            Wiglgotność: *${humidity}*
-            Temperatura minimalna: *${tempMin} stopni*
-            Temperatura maksymalna: *${tempMax} stopni*`;
+			samanta.postTextMessage.message.text = `W *${location}* jest obecnie *${weather}*\nTemperatura: *${temp} stopni*\nCiśnienie: *${pressure}*\nWiglgotność: *${humidity}*\nTemperatura minimalna: *${tempMin} stopni*\nTemperatura maksymalna: *${tempMax} stopni*`;
 			samanta.submit(samanta.postTextMessage);
 		})
 		.catch(error => console.log(error));
