@@ -73,6 +73,8 @@ module.exports = (props, self, senderId) => {
 			zditm_scrap("Plac Rodla", line, self, senderId);
 			break;
 		default:
-			return "Nie wykryto połączenia :(";
+			self.postTextMessage.message.text = "Nie wykryto połączenia :(";
+			self.postTextMessage.recipient.id = senderId;
+			self.submit(self.postTextMessage);
 	}
 };
