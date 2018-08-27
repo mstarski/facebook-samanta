@@ -3,14 +3,12 @@ const cheerio = require("cheerio");
 const zditm_ids = require("../definitions/zditm_ids");
 
 function zditm_scrap(stop_name, line_number, self, senderId) {
-	const stopId = zditm_ids.stops_ids[stop_name];
+	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
 	axios
 		.get(
-			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${
-				stopId[0]
-			}`
+			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
 		)
 		.then(response => {
 			const $ = cheerio.load(response.data, {
@@ -24,30 +22,10 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 			return `${direction} \n${departure}`;
 		})
 		.then(result => {
-			axios
-				.get(
-					`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${
-						stopId[1]
-					}`
-				)
-				.then(response => {
-					const $ = cheerio.load(response.data, {
-						normalizeWhitespace: true,
-					});
-					const direction = $("p")
-						.eq(6)
-						.text();
-					const departure = $("#najkursxhr").text();
-					console.log(`${direction} \n${departure}`);
-					return `${result}\n${direction} \n${departure}`;
-				});
-		})
-		.then(result => {
 			self.postTextMessage.message.text = result;
 			self.postTextMessage.recipient.id = senderId;
 			self.submit(self.postTextMessage);
-		})
-		.catch(error => "Nie znalazłam połączenia :(");
+		});
 }
 
 module.exports = (props, self, senderId) => {
