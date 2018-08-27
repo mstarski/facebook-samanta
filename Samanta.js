@@ -91,6 +91,7 @@ class Samanta {
             };
             
             zditm().then(() => {
+                console.log(self.postTextMessage.message.text);
                 self.postTextMessage.recipient.id = senderId;
                 self.submit(self.postTextMessage);
             })
