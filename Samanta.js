@@ -80,9 +80,12 @@ class Samanta {
         }
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
-            this.postTextMessage.recipient.id = senderId;
-            this.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
-            this.submit(this.postTextMessage);
+
+            (async function zditm() {
+                this.postTextMessage.recipient.id = senderId;
+                this.postTextMessage.message.text = await zditm_scrapper(formattedText.substring(5));
+                await this.submit(this.postTextMessage);
+            })();
         }
 
         else {
