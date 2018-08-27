@@ -22,6 +22,9 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 					.text();
 				const departure = $("#najkursxhr").text();
 				return `-------------------\n*${direction}*\n*${departure}*\n-------------------`;
+			})
+			.catch(error => {
+				return "Nie wykryto połączenia :(";
 			});
 	}
 
@@ -63,6 +66,6 @@ module.exports = (props, self, senderId) => {
 			zditm_scrap("Plac Rodla", line, self, senderId);
 			break;
 		default:
-			return "Nie wykryto połączenia";
+			return "Nie wykryto połączenia :(";
 	}
 };
