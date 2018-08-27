@@ -1,21 +1,20 @@
 {
-  "name": "facebook-samanta",
-  "version": "1.0.0",
-  "description": "Facebook Bot - Samanta",
-  "main": "samanta.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
-  },
-  "author": "Michal Starski",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.3",
-    "moment": "^2.22.2",
-    "moment-timezone": "^0.5.20",
-    "request": "^2.88.0"
-  }
+	"name": "facebook-samanta",
+	"version": "1.0.0",
+	"description": "Facebook Bot - Samanta",
+	"main": "samanta.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js"
+	},
+	"author": "Michal Starski",
+	"license": "MIT",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"body-parser": "^1.18.3",
+		"cheerio": "^1.0.0-rc.2",
+		"express": "^4.16.3",
+		"moment": "^2.22.2",
+		"moment-timezone": "^0.5.20"
+	}
 }

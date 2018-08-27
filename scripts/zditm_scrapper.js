@@ -41,13 +41,15 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 module.exports = (props, self, senderId) => {
 	const params = props.replace(/\s/g, "");
 
+	if (!params) {
+		return "Lista przystanków";
+	}
+
 	const line = params.substring(3, 6);
 
 	if (isNaN(parseInt(line))) {
 		return "Podany numer linii jest błędny!";
 	}
-
-	console.log(params.substring(0, 3));
 
 	switch (params.substring(0, 3)) {
 		case "sow":
