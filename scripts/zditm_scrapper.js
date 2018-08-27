@@ -24,15 +24,16 @@ function zditm_scrap(stop_name, line_number) {
 
 module.exports = props => {
 	const params = props.replace(/\s/g, "");
-	let request = new Object();
 	console.log(params.substring(3, 6));
 
-	if (isNaN(parseInt(params.substring(3)))) {
+	const line = params.substring(3, 6);
+
+	if (isNaN(parseInt(line))) {
 		return "Podany numer linii jest błędny!";
 	}
 
 	if (params.indexOf("sow") !== -1) {
-		return "Kusocinskiego" + params.substring(3);
+		return "Sowinskiego" + line;
 	}
 	if (params.indexOf("swo") !== -1) {
 		return "Swolezerow";
