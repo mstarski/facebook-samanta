@@ -33,7 +33,7 @@ module.exports = props => {
 		return "Podany numer linii jest błędny!";
 	}
 
-	switch (params.indexOf) {
+	switch (params.substring(0, 4)) {
 		case "sow":
 			zditm_scrap("Sowinskiego", line);
 		case "swo":
