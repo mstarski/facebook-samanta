@@ -35,7 +35,7 @@ module.exports = props => {
 	}
 
 	if (params.indexOf("sow") !== -1) {
-		return zditm_scrap("Sowinskiego", 3);
+		return zditm_scrap("Sowinskiego", line);
 	}
 	if (params.indexOf("swo") !== -1) {
 		return "Swolezerow";
