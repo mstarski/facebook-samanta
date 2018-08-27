@@ -7,7 +7,7 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 	const lineId = zditm_ids.line_ids[line_number];
 
 	function getSchedule(index) {
-		axios
+		return axios
 			.get(
 				`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${
 					stopId[index]
