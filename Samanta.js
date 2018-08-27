@@ -28,7 +28,7 @@ class Samanta {
     }
 
 
-    async sendFacebookMessage(text, senderId){
+    sendFacebookMessage(text, senderId){
 
         const formattedText = text.toLowerCase().trim().replace(/\s+/g, " ");
 
@@ -80,9 +80,7 @@ class Samanta {
         }
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
-            this.postTextMessage.message.text = await zditm_scrapper(formattedText.substring(5));
-            this.postTextMessage.recipient.id = senderId;
-            this.submit(this.postTextMessage);
+            zditm_scrapper(formattedText.substring(5), this);
         }
 
         else {
