@@ -51,7 +51,9 @@ module.exports = (props, self, senderId) => {
 	const line = params.substring(3, 6);
 
 	if (isNaN(parseInt(line))) {
-		return "Podany numer linii jest błędny!";
+		self.postTextMessage.message.text = "Podany numer linii jest błędny!";
+		self.postTextMessage.recipient.id = senderId;
+		self.submit(self.postTextMessage);
 	}
 
 	switch (params.substring(0, 3)) {
