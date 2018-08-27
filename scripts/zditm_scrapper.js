@@ -33,7 +33,9 @@ module.exports = props => {
 	}
 
 	if (params.indexOf("sow") !== -1) {
-		return "Sowinskiego" + line;
+		return `${zditm_ids.stops_ids["Sowinskiego"]}  ${
+			zditm_ids.line_ids[line]
+		}`;
 	}
 	if (params.indexOf("swo") !== -1) {
 		return "Swolezerow";
