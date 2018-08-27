@@ -20,6 +20,7 @@ function zditm_scrap(stop_name, line_number) {
 				.eq(6)
 				.text();
 			departure = $("#najkursxhr").text();
+			console.log(direction + departure);
 		}
 	);
 	return `${direction} \n ${departure}`;
