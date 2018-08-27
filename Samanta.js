@@ -81,13 +81,13 @@ class Samanta {
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
             function zditm() {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve, reject, samanta) => {
                     this.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
                     resolve();
                 }) 
             };
             
-            zditm().then(() => {
+            zditm(this).then(() => {
                 this.postTextMessage.recipient.id = senderId;
                 this.submit(this.postTextMessage);
             })
