@@ -20,4 +20,12 @@ module.exports = {
 		"11": 10,
 		"12": 11,
 	},
+
+	help: {
+		Sowinskiego: "sow",
+		Swolezerow: "swo",
+		"Brama Portowa": "bpo",
+		"Plac Rodla": "rod",
+		"Dworzec Glowny": "dgl",
+	},
 };
