@@ -24,34 +24,41 @@ function zditm_scrap(stop_name, line_number) {
 }
 
 module.exports = props => {
-	const params = props.replace(/\s/g, "");
-	console.log(params.substring(3, 6));
+	return new Promise((resolve, reject) => {
+		const params = props.replace(/\s/g, "");
+		console.log(params.substring(3, 6));
 
-	const line = params.substring(3, 6);
+		const line = params.substring(3, 6);
 
-	if (isNaN(parseInt(line))) {
-		return "Podany numer linii jest błędny!";
-	}
+		if (isNaN(parseInt(line))) {
+			return "Podany numer linii jest błędny!";
+		}
 
-	console.log(params.substring(0, 3));
+		console.log(params.substring(0, 3));
 
-	switch (params.substring(0, 3)) {
-		case "sow":
-			zditm_scrap("Sowinskiego", line);
-			break;
-		case "swo":
-			zditm_scrap("Swolezerow", line);
-			break;
-		case "dgl":
-			zditm_scrap("Dworzec Glowny", line);
-			break;
-		case "bpo":
-			zditm_scrap("Brama Portowa", line);
-			break;
-		case "rod":
-			zditm_scrap("Plac Rodla", line);
-			break;
-		default:
-			return "Nie wykryto połączenia";
-	}
+		switch (params.substring(0, 3)) {
+			case "sow":
+				zditm_scrap("Sowinskiego", line);
+				resolve();
+				break;
+			case "swo":
+				zditm_scrap("Swolezerow", line);
+				resolve();
+				break;
+			case "dgl":
+				zditm_scrap("Dworzec Glowny", line);
+				resolve();
+				break;
+			case "bpo":
+				zditm_scrap("Brama Portowa", line);
+				resolve();
+				break;
+			case "rod":
+				zditm_scrap("Plac Rodla", line);
+				resolve();
+				break;
+			default:
+				reject();
+		}
+	});
 };

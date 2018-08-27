@@ -28,7 +28,7 @@ class Samanta {
     }
 
 
-    sendFacebookMessage(text, senderId){
+    async sendFacebookMessage(text, senderId){
 
         const formattedText = text.toLowerCase().trim().replace(/\s+/g, " ");
 
@@ -80,21 +80,9 @@ class Samanta {
         }
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
-
-            const self = this;
-
-            function zditm() {
-                return new Promise((resolve, reject) => {
-                    self.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
-                    resolve();
-                }) 
-            };
-            
-            zditm().then(() => {
-                console.log('TEXT:' + self.postTextMessage.message.text);
-                self.postTextMessage.recipient.id = senderId;
-                self.submit(self.postTextMessage);
-            })
+            this.postTextMessage.message.text = await zditm_scrapper(formattedText.substring(5));
+            this.postTextMessage.recipient.id = senderId;
+            this.submit(this.postTextMessage);
         }
 
         else {
