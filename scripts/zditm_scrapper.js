@@ -11,7 +11,6 @@ function zditm_scrap(stop_name, line_number) {
 			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
 		)
 		.then(response => {
-			console.log(response.data);
 			const $ = cheerio.load(response.data, {
 				normalizeWhitespace: true,
 			});
