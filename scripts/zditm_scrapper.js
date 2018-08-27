@@ -2,11 +2,13 @@ const request = require("request");
 const cheerio = require("cheerio");
 const zditm_ids = require("../definitions/zditm_ids");
 
-function zditm_scrap(stop_name, line_number) {
+async function zditm_scrap(stop_name, line_number) {
 	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
-	return request(
+	let direction, departure;
+
+	await request(
 		`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`,
 		function(error, request, html) {
 			if (error) {
@@ -14,13 +16,14 @@ function zditm_scrap(stop_name, line_number) {
 			}
 
 			const $ = cheerio.load(html, { normalizeWhitespace: true });
-			const direction = $("p")
+			direction = $("p")
 				.eq(6)
 				.text();
-			const departure = $("#najkursxhr").text();
-			return `${direction} \n ${departure}`;
+			departure = $("#najkursxhr").text();
 		}
 	);
+
+	return `${direction} \n ${departure}`;
 }
 
 module.exports = props => {
