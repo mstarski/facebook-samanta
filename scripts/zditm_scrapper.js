@@ -21,7 +21,7 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 					.eq(6)
 					.text();
 				const departure = $("#najkursxhr").text();
-				return `*${direction}*\n ------------------- \n*${departure}*`;
+				return `*${direction}*\n*${departure}*\n-------------------`;
 			});
 	}
 
