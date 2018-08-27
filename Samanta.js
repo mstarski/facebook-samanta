@@ -81,6 +81,8 @@ class Samanta {
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
 
+            const self = this;
+
             function zditm() {
                 return new Promise((resolve, reject) => {
                     self.postTextMessage.message.text = zditm_scrapper(formattedText.substring(5));
