@@ -4,11 +4,11 @@ const zditm_ids = require("../definitions/zditm_ids");
 
 function zditm_scrap(stop_name, line_number) {
 	const stopId = zditm_ids.stops_ids[stop_name];
-	const line_number = zditm_ids.line_ids[line_number];
+	const lineId = zditm_ids.line_ids[line_number];
 
 	axios
 		.get(
-			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${line_number},${stop_name}`
+			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
 		)
 		.then(response => {
 			const $ = cheerio.load(response.data);
