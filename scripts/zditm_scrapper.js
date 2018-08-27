@@ -6,9 +6,7 @@ function zditm_scrap(stop_name, line_number) {
 	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
-	var direction, departure;
-
-	request(
+	return request(
 		`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`,
 		function(error, request, html) {
 			if (error) {
@@ -16,14 +14,13 @@ function zditm_scrap(stop_name, line_number) {
 			}
 
 			const $ = cheerio.load(html, { normalizeWhitespace: true });
-			direction = $("p")
+			const direction = $("p")
 				.eq(6)
 				.text();
-			departure = $("#najkursxhr").text();
-			console.log(direction + departure);
+			const departure = $("#najkursxhr").text();
+			return `${direction} \n ${departure}`;
 		}
 	);
-	return `${direction} \n ${departure}`;
 }
 
 module.exports = props => {
