@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const zditm_ids = require("../definitions/zditm_ids");
 
-function zditm_scrap(stop_name, line_number, self) {
+function zditm_scrap(stop_name, line_number, self, senderId) {
 	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
@@ -28,7 +28,7 @@ function zditm_scrap(stop_name, line_number, self) {
 		});
 }
 
-module.exports = (props, self) => {
+module.exports = (props, self, senderId) => {
 	const params = props.replace(/\s/g, "");
 	console.log(params.substring(3, 6));
 
@@ -42,19 +42,19 @@ module.exports = (props, self) => {
 
 	switch (params.substring(0, 3)) {
 		case "sow":
-			zditm_scrap("Sowinskiego", line, self);
+			zditm_scrap("Sowinskiego", line, self, senderId);
 			break;
 		case "swo":
-			zditm_scrap("Swolezerow", line, self);
+			zditm_scrap("Swolezerow", line, self, senderId);
 			break;
 		case "dgl":
-			zditm_scrap("Dworzec Glowny", line, self);
+			zditm_scrap("Dworzec Glowny", line, self, senderId);
 			break;
 		case "bpo":
-			zditm_scrap("Brama Portowa", line, self);
+			zditm_scrap("Brama Portowa", line, self, senderId);
 			break;
 		case "rod":
-			zditm_scrap("Plac Rodla", line, self);
+			zditm_scrap("Plac Rodla", line, self, senderId);
 			break;
 		default:
 			return "Nie wykryto połączenia";

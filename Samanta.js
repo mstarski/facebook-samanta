@@ -80,7 +80,7 @@ class Samanta {
         }
 
         else if(actions.ZDITM.indexOf(formattedText.substring(0,5)) >= 0) {
-            zditm_scrapper(formattedText.substring(5), this);
+            zditm_scrapper(formattedText.substring(5), this, senderId);
         }
 
         else {
