@@ -6,8 +6,6 @@ function zditm_scrap(stop_name, line_number) {
 	const stopId = zditm_ids.stops_ids[stop_name][0];
 	const lineId = zditm_ids.line_ids[line_number];
 
-	let direction, departure;
-
 	axios
 		.get(
 			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
@@ -17,12 +15,13 @@ function zditm_scrap(stop_name, line_number) {
 			const $ = cheerio.load(response.data, {
 				normalizeWhitespace: true,
 			});
-			direction = $("p")
+			const direction = $("p")
 				.eq(6)
 				.text();
-			departure = $("#najkursxhr").text();
+			const departure = $("#najkursxhr").text();
+			return `${direction} \n ${departure}`;
 		})
-		.then(() => `${direction} \n ${departure}`);
+		.then(result => result);
 }
 
 module.exports = props => {
