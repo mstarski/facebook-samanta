@@ -8,7 +8,7 @@ function zditm_scrap(stop_name, line_number) {
 
 	axios
 		.get(
-			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${lineId},${stopId}`
+			`https://www.zditm.szczecin.pl/pasazer/rozklady-jazdy,tabliczka,${line_number},${stop_name}`
 		)
 		.then(response => {
 			const $ = cheerio.load(response.data);
