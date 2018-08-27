@@ -5,6 +5,7 @@ module.exports = {
 		"Brama Portowa": [23, 29],
 		"Plac Rodla": [65, 56],
 		"Dworzec Glowny": [344, 343],
+		Poniatowskiego: [484, 481],
 	},
 
 	line_ids: {
