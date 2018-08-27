@@ -20,12 +20,11 @@ function zditm_scrap(stop_name, line_number) {
 				.eq(6)
 				.text();
 			departure = $("#najkursxhr").text();
-			console.log(1);
+		},
+		function() {
+			return `${direction} \n ${departure}`;
 		}
 	);
-
-	console.log(2);
-	return `${direction} \n ${departure}`;
 }
 
 module.exports = props => {
