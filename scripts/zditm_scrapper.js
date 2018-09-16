@@ -84,12 +84,16 @@ module.exports = (props, self, senderId) => {
 			break;
 		case "wys":
 			zditm_scrap("Wyszyńskiego", line, self, senderId);
+			break;
 		case "kas":
 			zditm_scrap("Plac Żołnierza Polskiego", line, self, senderId);
+			break;
 		case "plg":
 			zditm_scrap("Plac Grunwaldzki", line, self, senderId);
+			break;
 		case "ray":
 			zditm_scrap("Rayskiego", line, self, senderId);
+			break;
 		default:
 			self.postTextMessage.message.text = "Nie wykryto połączenia :(";
 			self.postTextMessage.recipient.id = senderId;
