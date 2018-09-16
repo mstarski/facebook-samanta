@@ -85,14 +85,6 @@ class Samanta {
         }
 
         else if(actions.LOVE.indexOf(formattedText) >= 0) {
-
-            if(formattedText === actions.LOVE[3]) {
-                this.postTextMessage.recipient.id = senderId;
-                this.postTextMessage.message.text = "私はもあなたが愛";
-                this.submit(this.postTextMessage);
-                return;
-            }
-
             const answers = ["Ja ciebie też <3", "Niestety nie odwzajemniam Twojego uczucia, ale zostańmy przyjaciółmi", "A weź przestań", "Nie wiem co powiedzieć 😱", "💁‍", "Nie mozemy, to niemoralne", "Miłośc względem bota jest nieludzka ..."];
             const rand = Math.floor(Math.random() * 7);
             this.postTextMessage.recipient.id = senderId;
