@@ -35,7 +35,7 @@ const actions = {
 	LS: ["ls"],
 	MATRIX: ["macierz"],
 	ZDITM: ["zditm"],
-	LOVE: ["kocham cię, kocham cie", "i love you", "愛している"],
+	LOVE: ["kocham cię", "kocham cie", "i love you", "愛している"],
 };
 
 module.exports = actions;
