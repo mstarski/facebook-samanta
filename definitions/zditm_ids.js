@@ -6,6 +6,10 @@ module.exports = {
 		"Plac Rodla": [65, 56],
 		"Dworzec Glowny": [344, 343],
 		Poniatowskiego: [484, 481],
+		Wyszyńskiego: [37, 38],
+		"Plac Żołnierza Polskiego": [52, 51],
+		"Plac Grundwaldzki": [70, 71],
+		Rayskiego: [130, 131],
 	},
 
 	line_ids: {
@@ -29,5 +33,9 @@ module.exports = {
 		"Plac Rodla": "rod",
 		"Dworzec Glowny": "dgl",
 		Poniatowskiego: "pon",
+		Wyszyńskiego: "wys",
+		"Plac Żołnierza Polskiego (Kaskada)": "kas",
+		"Plac Grunwaldzki": "plg",
+		Rayskiego: "ray",
 	},
 };
