@@ -88,7 +88,7 @@ class Samanta {
 
             if(formattedText === actions.LOVE[3]) {
                 this.postTextMessage.recipient.id = senderId;
-                this.postTextMessage.message.text = "私はもあなたが愛している";
+                this.postTextMessage.message.text = "私はもあなたが愛しているよ　＜3";
                 this.submit(this.postTextMessage);
                 return;
             }
