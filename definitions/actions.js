@@ -36,6 +36,7 @@ const actions = {
 	MATRIX: ["macierz"],
 	ZDITM: ["zditm"],
 	LOVE: ["kocham cię", "kocham cie", "i love you", "愛している"],
+	JOKE: ["opowiedz żart", "opowiedz zart", "joke", "zart", "żart"],
 };
 
 module.exports = actions;
