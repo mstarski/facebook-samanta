@@ -101,12 +101,12 @@ class Samanta {
 			this.submit(this.postTextMessage);
 		} else if (actions.JOKE.indexOf(formattedText) >= 0) {
 			axios({
-				method: "GET",
+				method: "get",
 				headers: { Accept: "application/json" },
 				url: "https://icanhazdadjoke.com/",
 			}).then(response => {
 				this.postTextMessage.recipient.id = senderId;
-				this.postTextMessage.message.text = response.joke;
+				this.postTextMessage.message.text = response.data.joke;
 				this.submit(this.postTextMessage);
 			});
 		} else {
