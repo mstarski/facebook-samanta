@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 //Get local credentials
 
 let credentials = (function getLocalInfo() {
-	return fs.readFileSync("local/manifest.json", (err, data) => {
+	return fs.readFileSync("local/manifest.json", "utf-8", (err, data) => {
 		if (err) {
 			throw new Error(err);
 		}
