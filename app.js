@@ -21,6 +21,8 @@ let credentials = (function getLocalInfo() {
 
 //Create Samanta Object that will response to user requests
 
+console.log(credentials["page-access-token"]);
+
 const Sam = new Samanta(credentials["page-access-token"]);
 // Get will trigger Samanta's docs
 app.get("/", (req, res) => {
