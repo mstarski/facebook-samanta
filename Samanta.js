@@ -8,10 +8,9 @@ const { exec } = require("child_process");
 const zditm_scrapper = require("./scripts/zditm_scrapper");
 
 class Samanta {
-	constructor() {
+	constructor(pageAccessToken) {
 		moment.locale("pl");
-		this.pageAccessToken =
-			"EAAGSikKKJqwBADZABJwZCzOf99f4aohdd8z8bSUfJlxD3yGNRgo95XGf8GZB27ZBumyRwBZCIZAMwfdNZA1eVDv9shPs3rNLzjNkytVxtetEMNZCrdM3qP8sXX0aS2APdV3C5FAM3T3UjbyIFk9yQL4en12xfTZANQgVVOdjJTklhbRGsZCUiyHuKo";
+		this.pageAccessToken = pageAccessToken;
 		this.url = `https://graph.facebook.com/me/messages?access_token=${
 			this.pageAccessToken
 		}`;

@@ -3,19 +3,35 @@ const http = require("http").Server(app);
 const bodyParser = require("body-parser");
 const Samanta = require("./Samanta");
 const sendWeather = require("./scripts/sendWeather");
+const fs = require("fs");
 
 //Middleware
 app.use(bodyParser.json());
 
+//Get local credentials
+
+let credentials = (function getLocalInfo() {
+	return fs.readFileSync("local/manifest.json", (err, data) => {
+		if (err) {
+			throw new Error(err);
+		}
+		return JSON.parse(data);
+	});
+})();
+
 //Create Samanta Object that will response to user requests
 
-const Sam = new Samanta();
+const Sam = new Samanta(credentials["page-access-token"]);
+
+// Get will trigger Samanta's docs
+app.get("/", (req, res) => {
+	return "Samanta - a facebook messenger bot";
+});
 
 // Creates the endpoint for our webhook
 app.post("/webhook", (req, res) => {
 	// Your verify token. Should be a random string.
-	let VERIFY_TOKEN =
-		"AFD8A4099F482899C738F919D9AA58A985B9C742F4650CF8D68B483FAF5AC084A2D605393A5BFD646B46F5A787155EE8DD233CA15A4882C619BB6912201E567E";
+	let VERIFY_TOKEN = credentials["verify-token"];
 
 	// Parse the query params
 	let mode = req.query["hub.mode"];
@@ -59,4 +75,7 @@ app.post("/webhook", (req, res) => {
 	}
 });
 
-http.listen(process.env.PORT || 8080, console.log("Listening ..."));
+http.listen(
+	process.env.PORT || 8080,
+	console.log(`Samanta running on port ${process.env.PORT || 8080}`)
+);
