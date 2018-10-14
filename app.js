@@ -19,14 +19,12 @@ let credentials = (function getLocalInfo() {
 	});
 })();
 
-console.log(credentials);
-
 //Create Samanta Object that will response to user requests
 
 const Sam = new Samanta(credentials["page-access-token"]);
 // Get will trigger Samanta's docs
 app.get("/", (req, res) => {
-	return "Samanta - a facebook messenger bot";
+	res.send("Samanta - a facebook messenger bot");
 });
 
 // Creates the endpoint for our webhook
