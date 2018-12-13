@@ -6,6 +6,7 @@ const moment = require("moment");
 const stickerUrls = require("./definitions/stickerUrls");
 const { exec } = require("child_process");
 const zditm_scrapper = require("./scripts/zditm_scrapper");
+const MatrixReduce = require("./scripts/sam-mreducer");
 
 class Samanta {
 	constructor(pageAccessToken) {
@@ -72,7 +73,13 @@ class Samanta {
 			});
 		} else if (actions.MATRIX.indexOf(formattedText.substring(0, 7)) >= 0) {
 			this.postTextMessage.recipient.id = senderId;
-			this.postTextMessage.message.text = "Wkrótce ją policze !";
+
+			const args = formattedText.substring(7).trim();
+			const result = MatrixReduce(args);
+			if (!result) {
+				this.postTextMessage.message.text = "Błędne dane";
+			}
+			this.postTextMessage.message.text = JSON.stringify(result);
 			this.submit(this.postTextMessage);
 		} else if (actions.ZDITM.indexOf(formattedText.substring(0, 5)) >= 0) {
 			zditm_scrapper(formattedText.substring(5), this, senderId);
