@@ -9,7 +9,7 @@ function matrixSort(a, b) {
 	return 0;
 }
 
-function reduce(n) {
+function reduce(n, matrix) {
 	//Find first non-zero element in the first row
 	let anchor = {};
 	for (let i = 0; i < matrix[n].length; i++)
@@ -32,7 +32,7 @@ function reduce(n) {
 	}
 }
 
-function completeReduce() {
+function completeReduce(matrix) {
 	//Reduce all element above the leading 1 to 0
 	let reducer;
 	for (let i = 1; i < matrix.length; i++) {
@@ -78,8 +78,8 @@ function MatrixReduce(input) {
 	matrix.sort(matrixSort);
 
 	//Reduce
-	for (let n = 0; n < matrix.length; n++) reduce(n);
-	completeReduce();
+	for (let n = 0; n < matrix.length; n++) reduce(n, matrix);
+	completeReduce(matrix);
 	//Sort once again if all 0 rows are not at the bottom of the matrix
 	matrix.sort();
 	for (let row of matrix) {
