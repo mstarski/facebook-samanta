@@ -1,5 +1,3 @@
-let matrix = [];
-
 //Sorting function
 function matrixSort(a, b) {
 	let aZeros = 0;
@@ -60,6 +58,7 @@ function completeReduce() {
 }
 
 function MatrixReduce(input) {
+	const matrix = [];
 	let args = input.split(".");
 	const rows = args[0];
 	const cols = args[1];
