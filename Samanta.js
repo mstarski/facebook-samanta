@@ -79,6 +79,7 @@ class Samanta {
 			if (!result) {
 				this.postTextMessage.message.text = "Błędne dane";
 			}
+			result = result.join("\n");
 			this.postTextMessage.message.text = JSON.stringify(result);
 			this.submit(this.postTextMessage);
 		} else if (actions.ZDITM.indexOf(formattedText.substring(0, 5)) >= 0) {
