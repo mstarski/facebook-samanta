@@ -58,7 +58,7 @@ app.get("/webhook", (req, res) => {
 //Github webhook
 app.post("/api/samanta-webhook", (req, res) => {
 	console.log(req.body);
-	return req.body;
+	res.send(req.body);
 });
 
 // Creates the endpoint for our webhook
