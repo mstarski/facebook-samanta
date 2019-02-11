@@ -55,6 +55,12 @@ app.get("/webhook", (req, res) => {
 	}
 });
 
+//Github webhook
+app.post("/api/samanta-webhook", (req, res) => {
+	console.log(req.body);
+	return req.body;
+});
+
 // Creates the endpoint for our webhook
 app.post("/webhook", (req, res) => {
 	// Your verify token. Should be a random string.
