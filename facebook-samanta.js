@@ -29,7 +29,7 @@ const Sam = new Samanta(credentials["page-access-token"]);
 
 // Get will trigger Samanta's docs
 app.get("/", (req, res) => {
-	res.send("Samanta - a facebook messenger bot");
+	res.send("Samanta - a facebook messenger bot test!");
 });
 
 // Adds support for GET requests to our webhook [Verification Purposes]
