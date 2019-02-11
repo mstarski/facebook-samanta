@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const Samanta = require("./Samanta");
 const sendWeather = require("./scripts/sendWeather");
 const fs = require("fs");
+const { exec } = require("child_process");
 
 //Middleware
 app.use(bodyParser.json());
@@ -58,7 +59,19 @@ app.get("/webhook", (req, res) => {
 //Github webhook
 app.post("/api/samanta-webhook", (req, res) => {
 	console.log(req.body);
-	res.send(req.body);
+	res.send("Thanks for the push!");
+	exec("git pull origin master && pm2 restart facebook-samanta", function(
+		error,
+		stdout,
+		stderr
+	) {
+		if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		}
+		console.log(`stdout: ${stdout}`);
+		console.log(`stderr: ${stderr}`);
+	});
 });
 
 // Creates the endpoint for our webhook
