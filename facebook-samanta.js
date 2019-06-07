@@ -8,6 +8,8 @@ const router = express.Router();
 const facebook = require("./webhooks/facebook")(router);
 const github = require("./webhooks/github")(router);
 
+console.log(facebook, github);
+
 //Middleware
 app.use(bodyParser.json());
 
