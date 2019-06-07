@@ -7,6 +7,7 @@ const stickerUrls = require("./../definitions/stickerUrls");
 const { exec } = require("child_process");
 const zditm_scrapper = require("./../scripts/zditm_scrapper");
 const MatrixReduce = require("./../scripts/sam-mreducer");
+const invokers = require("../invokers/invokers");
 
 class Samanta {
 	constructor(pageAccessToken) {
@@ -37,88 +38,9 @@ class Samanta {
 			.replace(/\s+/g, " ");
 		console.log(formattedText);
 
-		if (actions.HELLO.indexOf(formattedText) >= 0) {
-			this.postTextMessage.message.text = "Witaj ^_^";
-			this.postTextMessage.recipient.id = senderId;
-			this.submit(this.postTextMessage);
-		} else if (actions.DATE.indexOf(formattedText) >= 0) {
-			const date = timezone
-				.tz("Europe/Warsaw")
-				.format("MMMM Do YYYY, h:mm:ss a");
-			this.postTextMessage.message.text = date;
-			this.postTextMessage.recipient.id = senderId;
-			this.submit(this.postTextMessage);
-		} else if (actions.CATS.indexOf(formattedText) >= 0) {
-			this.postAttachmentMessage.recipient.id = senderId;
-			this.postAttachmentMessage.message.attachment.payload.url =
-				"http://thecatapi.com/api/images/get?api_key=MzMwMTA4";
-			this.submit(this.postAttachmentMessage);
-		} else if (actions.DOGS.indexOf(formattedText) >= 0) {
-			this.postAttachmentMessage.recipient.id = senderId;
-			this.postAttachmentMessage.message.attachment.payload.url =
-				"https://api.thedogapi.com/v1/images/search?format=src&mime_types=image";
-			this.submit(this.postAttachmentMessage);
-		} else if (actions.WEATHER.indexOf(formattedText) >= 0) {
-			this.postLocalizationRequest.recipient.id = senderId;
-			this.submit(this.postLocalizationRequest);
-		} else if (actions.LS.indexOf(formattedText) >= 0) {
-			exec("ls -al", (err, stdout, stderr) => {
-				if (err) {
-					console.log(stderr);
-					return;
-				}
-				this.postTextMessage.recipient.id = senderId;
-				this.postTextMessage.message.text = stdout;
-				this.submit(this.postTextMessage);
-			});
-		} else if (actions.MATRIX.indexOf(formattedText.substring(0, 7)) >= 0) {
-			this.postTextMessage.recipient.id = senderId;
+		console.log(invokers);
 
-			const args = formattedText.substring(7).trim();
-			const result = MatrixReduce(args);
-			if (!result) {
-				this.postTextMessage.message.text = "Błędne dane";
-			}
-			this.postTextMessage.message.text = JSON.stringify(result);
-			this.submit(this.postTextMessage);
-		} else if (actions.ZDITM.indexOf(formattedText.substring(0, 5)) >= 0) {
-			zditm_scrapper(formattedText.substring(5), this, senderId);
-		} else if (actions.LOVE.indexOf(formattedText) >= 0) {
-			if (formattedText === actions.LOVE[3]) {
-				this.postTextMessage.recipient.id = senderId;
-				this.postTextMessage.message.text =
-					"私はもあなたが愛しているよ　＜3";
-				this.submit(this.postTextMessage);
-				return;
-			}
-
-			const answers = [
-				"Ja ciebie też <3",
-				"Niestety nie odwzajemniam Twojego uczucia, ale zostańmy przyjaciółmi",
-				"A weź przestań",
-				"Nie wiem co powiedzieć 😱",
-				"💁‍",
-				"Nie mozemy, to niemoralne",
-				"Miłośc względem bota jest nieludzka ...",
-			];
-			const rand = Math.floor(Math.random() * 7);
-			this.postTextMessage.recipient.id = senderId;
-			this.postTextMessage.message.text = answers[rand];
-			this.submit(this.postTextMessage);
-		} else if (actions.JOKE.indexOf(formattedText) >= 0) {
-			axios({
-				method: "get",
-				headers: { Accept: "application/json" },
-				url: "https://icanhazdadjoke.com/",
-			}).then(response => {
-				this.postTextMessage.recipient.id = senderId;
-				this.postTextMessage.message.text = response.data.joke;
-				this.submit(this.postTextMessage);
-			});
-		} else {
-			console.log(formattedText);
-			this.messageUnknown(senderId);
-		}
+		this.messageUnknown(senderId);
 	}
 
 	messageUnknown(senderId) {

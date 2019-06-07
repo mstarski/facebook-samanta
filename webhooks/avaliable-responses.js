@@ -1,15 +1,6 @@
 const sendWeather = require("../scripts/sendWeather");
 
 //Webhook payload handlers
-
-class Response {
-	constructor(condition, handler, args) {
-		this.condition = condition;
-		this.handler = handler;
-		this.args = args;
-	}
-}
-
 module.exports = function(Samanta, senderId, text = null, attachments = null) {
 	return [
 		{
