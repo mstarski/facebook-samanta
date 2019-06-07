@@ -2,8 +2,6 @@
 const app = require("express")();
 const http = require("http").Server(app);
 const bodyParser = require("body-parser");
-const Samanta = require("./Samanta/Samanta");
-const credentials = require("./utils/get-credentials");
 
 const facebook = require("./webhooks/facebook");
 const github = require("./webhooks/github");
@@ -15,8 +13,6 @@ app.use(bodyParser.json());
 app.use("/facebook", facebook);
 app.use("/github", github);
 
-//Create Samanta Object that will response to user requests
-const Sam = new Samanta(credentials["page-access-token"]);
 
 // Get will trigger Samanta's docs
 app.get("/", (req, res) => {

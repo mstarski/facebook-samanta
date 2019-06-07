@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const credentials = require("../utils/get-credentials");
 const sendWeather = require("../scripts/sendWeather");
+const Samanta = require("./Samanta/Samanta");
+
+//Create Samanta Object that will response to user requests
+const Sam = new Samanta(credentials["page-access-token"]);
 
 // Adds support for the webhook's GET method [Verification Purposes]
 router.get("/webhook", (req, res) => {
