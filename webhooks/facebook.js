@@ -11,8 +11,6 @@ module.exports = function(router) {
 		// Your verify token. Should be a random string.
 		let VERIFY_TOKEN = credentials["verify-token"];
 
-		console.log("dsad");
-
 		// Parse the query params
 		let mode = req.query["hub.mode"];
 		let token = req.query["hub.verify_token"];
