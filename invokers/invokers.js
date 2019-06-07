@@ -4,10 +4,10 @@ const outsideInvokers = require("./outside-invokers");
 const scrapperInvokers = require("./scrapper-invokers");
 const systemInvokers = require("./system-invokers");
 
-module.exports = {
-	...conversationInvokers,
-	...mathInvokers,
-	...outsideInvokers,
-	...scrapperInvokers,
-	...systemInvokers,
-};
+module.exports = (Samanta, formattedText) => ({
+	...conversationInvokers(Samanta, formattedText),
+	...mathInvokers(Samanta, formattedText),
+	...outsideInvokers(Samanta, formattedText),
+	...scrapperInvokers(Samanta, formattedText),
+	...systemInvokers(Samanta, formattedText),
+});

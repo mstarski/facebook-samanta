@@ -38,7 +38,7 @@ class Samanta {
 			.replace(/\s+/g, " ");
 		console.log(formattedText);
 
-		console.log(invokers);
+		console.log(invokers(this, formattedText));
 
 		this.messageUnknown(senderId);
 	}
