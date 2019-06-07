@@ -1,12 +1,7 @@
-const actions = require("./../definitions/actions");
 const messageTypes = require("../definitions/messageTypes");
 const axios = require("axios");
-const timezone = require("moment-timezone");
 const moment = require("moment");
 const stickerUrls = require("./../definitions/stickerUrls");
-const { exec } = require("child_process");
-const zditm_scrapper = require("./../scripts/zditm_scrapper");
-const MatrixReduce = require("./../scripts/sam-mreducer");
 const invokers = require("../invokers/invokers");
 
 class Samanta {
@@ -38,8 +33,14 @@ class Samanta {
 			.replace(/\s+/g, " ");
 		console.log(formattedText);
 
-		console.log(invokers(this, formattedText));
-
+		const Invokers = invokers(this, formattedText);
+		const keys = Object.keys(Invokers);
+		for (let i = 0; i < keys.length; i++) {
+			const invoker = Invokers[keys[i]];
+			if (invoker.condition) {
+				return invoker.handler();
+			}
+		}
 		this.messageUnknown(senderId);
 	}
 
