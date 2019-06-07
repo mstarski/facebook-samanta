@@ -33,7 +33,7 @@ module.exports = function(router) {
 	});
 
 	// Creates the endpoint for our webhook
-	app.post("/webhook", (req, res) => {
+	router.post("/webhook", (req, res) => {
 		console.log("Im here at the post");
 		let body = req.body;
 		console.log(body);
