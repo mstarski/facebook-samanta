@@ -1,10 +1,12 @@
 #!/usr/bin/node
-const app = require("express")();
+const express = require("express");
+const app = express();
 const http = require("http").Server(app);
 const bodyParser = require("body-parser");
+const router = express.Router();
 
-const facebook = require("./webhooks/facebook");
-const github = require("./webhooks/github");
+const facebook = require("./webhooks/facebook")(router);
+const github = require("./webhooks/github")(router);
 
 //Middleware
 app.use(bodyParser.json());
@@ -12,7 +14,6 @@ app.use(bodyParser.json());
 //Webhooks
 app.use("/facebook", facebook);
 app.use("/github", github);
-
 
 // Get will trigger Samanta's docs
 app.get("/", (req, res) => {
