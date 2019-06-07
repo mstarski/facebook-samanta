@@ -45,7 +45,7 @@ module.exports = function(router) {
 				let senderId = webhook_event.sender.id;
 				let text = webhook_event.message.text;
 				let attachments = webhook_event.message.attachments;
-				console.log(webhook_event);
+				console.log(entry);
 				if (text) {
 					//Text based events
 					console.log(text);
