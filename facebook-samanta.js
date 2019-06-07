@@ -2,7 +2,7 @@
 const app = require("express")();
 const http = require("http").Server(app);
 const bodyParser = require("body-parser");
-const Samanta = require("./Samanta");
+const Samanta = require("./Samanta/Samanta");
 const sendWeather = require("./scripts/sendWeather");
 const fs = require("fs");
 const { exec } = require("child_process");
