@@ -34,17 +34,8 @@ module.exports = function(router) {
 
 	// Creates the endpoint for our webhook
 	router.post("/webhook", (req, res) => {
-		console.log("Im here!");
-		// Your verify token. Should be a random string.
-		let VERIFY_TOKEN = credentials["verify-token"];
-
-		// Parse the query params
-		let mode = req.query["hub.mode"];
-		let token = req.query["hub.verify_token"];
-		let challenge = req.query["hub.challenge"];
-
+		console.log("Im here at post");
 		let body = req.body;
-
 		console.log(body);
 
 		// Checks this is an event from a page subscription
@@ -53,13 +44,11 @@ module.exports = function(router) {
 			body.entry.forEach(function(entry) {
 				// Gets the message. entry.messaging is an array, but
 				// will only ever contain one message, so we get index 0
-
-				console.log(entry);
-
 				let webhook_event = entry.messaging[0];
 				let senderId = webhook_event.sender.id;
 				let text = webhook_event.message.text;
 				let attachments = webhook_event.message.attachments;
+				console.log(webhook_event);
 
 				if (text) {
 					console.log(webhook_event);
