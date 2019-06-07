@@ -47,7 +47,9 @@ module.exports = function(router) {
 				let text = webhook_event.message.text;
 				let attachments = webhook_event.message.attachments;
 				console.log(entry);
-				console.log(avaliableResponses);
+				console.log(
+					avaliableResponses(Samanta, text, attachments, senderId)
+				);
 				if (text) {
 					//Text based events
 					console.log(text);
