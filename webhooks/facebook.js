@@ -43,6 +43,9 @@ module.exports = function(router) {
 				// Gets the message. entry.messaging is an array, but
 				// will only ever contain one message, so we get index 0
 				let webhook_event = entry.messaging[0] || null;
+
+				console.log(webhook_event);
+
 				let senderId = webhook_event.sender.id;
 				let text = webhook_event.message.text;
 				let attachments = webhook_event.message.attachments;
