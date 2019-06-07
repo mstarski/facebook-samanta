@@ -6,12 +6,12 @@ module.exports = function(router) {
 	//Create Samanta Object that will response to user requests
 	const Sam = new Samanta(credentials["page-access-token"]);
 
-	console.log("dsadasdsa");
-
 	// Adds support for the webhook's GET method [Verification Purposes]
 	router.get("/webhook", (req, res) => {
 		// Your verify token. Should be a random string.
 		let VERIFY_TOKEN = credentials["verify-token"];
+
+		console.log("dsad");
 
 		// Parse the query params
 		let mode = req.query["hub.mode"];
