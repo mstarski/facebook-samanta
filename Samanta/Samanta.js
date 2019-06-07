@@ -1,5 +1,5 @@
 const actions = require("./../definitions/actions");
-const messageTypes = require("./../definitions/messageTypes");
+const messageTypes = require("../definitions/messageTypes");
 const axios = require("axios");
 const timezone = require("moment-timezone");
 const moment = require("moment");
@@ -26,7 +26,7 @@ class Samanta {
 	submit(data) {
 		axios
 			.post(this.url, data)
-			.then(() => console.log("Message sent " + data.message.text))
+			.then(() => console.log("Message sent " + data.message.text || ""))
 			.catch(error => console.log(error));
 	}
 
