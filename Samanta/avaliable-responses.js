@@ -1,4 +1,5 @@
 module.exports = function(Samanta, text, attachments, senderId) {
+	console.log("am i here?");
 	const avaliable_responses = [
 		{
 			condition: text,
