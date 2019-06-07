@@ -2,7 +2,15 @@ const sendWeather = require("../scripts/sendWeather");
 
 //Webhook payload handlers
 
-module.exports = function(Samanta, text, attachments, senderId) {
+class Response {
+	constructor(condition, handler, args) {
+		this.condition = condition;
+		this.handler = handler;
+		this.args = args;
+	}
+}
+
+module.exports = function(Samanta, senderId, text = null, attachments = null) {
 	return [
 		{
 			condition: text,
@@ -10,12 +18,12 @@ module.exports = function(Samanta, text, attachments, senderId) {
 			handler: Samanta.sendFacebookMessage,
 		},
 		{
-			condition: attachments[0].payload.url,
+			condition: attachments && attachments[0].payload.url,
 			args: [senderId],
 			handler: Samanta.sendSticker,
 		},
 		{
-			condition: attachments[0].type === "location",
+			condition: attachments && attachments[0].type === "location",
 			args: [
 				senderId,
 				attachments[0].payload.coordinates.lat,
