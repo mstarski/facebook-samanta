@@ -1,7 +1,7 @@
 const axios = require("axios");
 const actions = require("../definitions/actions");
 
-const outsideInvokers = (Samanta, formattedText) => ({
+const outsideInvokers = (Samanta, formattedText, senderId) => ({
 	CATS: {
 		condition: actions.CATS.indexOf(formattedText) >= 0,
 		handler: () => {

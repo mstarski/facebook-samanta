@@ -1,7 +1,7 @@
 const actions = require("../definitions/actions");
 const MatrixReduce = require("../scripts/sam-mreducer");
 
-const mathInvokers = (Samanta, formattedText) => ({
+const mathInvokers = (Samanta, formattedText, senderId) => ({
 	MATRIX: {
 		condition: actions.MATRIX.indexOf(formattedText.substring(0, 7)) >= 0,
 		handler: () => {

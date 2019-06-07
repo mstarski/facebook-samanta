@@ -1,7 +1,7 @@
 const actions = require("../definitions/actions");
 const timezone = require("moment-timezone");
 
-const conversationInvokers = (Samanta, formattedText) => ({
+const conversationInvokers = (Samanta, formattedText, senderId) => ({
 	HELLO: {
 		condition: actions.HELLO.indexOf(formattedText) >= 0,
 		handler: () => {

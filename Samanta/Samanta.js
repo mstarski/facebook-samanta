@@ -33,7 +33,7 @@ class Samanta {
 			.replace(/\s+/g, " ");
 		console.log(formattedText);
 
-		const Invokers = invokers(this, formattedText);
+		const Invokers = invokers(this, formattedText, senderId);
 		const keys = Object.keys(Invokers);
 		for (let i = 0; i < keys.length; i++) {
 			const invoker = Invokers[keys[i]];

@@ -1,7 +1,7 @@
 const actions = require("../definitions/actions");
 const { exec } = require("child_process");
 
-const systemInvokers = (Samanta, formattedText) => ({
+const systemInvokers = (Samanta, formattedText, senderId) => ({
 	LS: {
 		condition: actions.LS.indexOf(formattedText) >= 0,
 		handler: () => {
