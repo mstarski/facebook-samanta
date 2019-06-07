@@ -17,4 +17,5 @@ module.exports = function(router) {
 			console.log(`stderr: ${stderr}`);
 		});
 	});
+	return router;
 };
