@@ -7,9 +7,9 @@ const router = express.Router();
 
 const facebook = require("./webhooks/facebook")(router);
 const github = require("./webhooks/github")(router);
-const sendWeather = require("../scripts/sendWeather");
-const Samanta = require("../Samanta/Samanta");
-const credentials = require("../utils/get-credentials");
+const sendWeather = require("./scripts/sendWeather");
+const Samanta = require("./Samanta/Samanta");
+const credentials = require("./utils/get-credentials");
 
 //Create Samanta Object that will response to user requests
 const Sam = new Samanta(credentials["page-access-token"]);
