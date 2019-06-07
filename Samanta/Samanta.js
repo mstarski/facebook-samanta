@@ -1,12 +1,12 @@
-const actions = require("./definitions/actions");
-const messageTypes = require("./definitions/messageTypes");
+const actions = require("./../definitions/actions");
+const messageTypes = require("./../definitions/messageTypes");
 const axios = require("axios");
 const timezone = require("moment-timezone");
 const moment = require("moment");
-const stickerUrls = require("./definitions/stickerUrls");
+const stickerUrls = require("./../definitions/stickerUrls");
 const { exec } = require("child_process");
-const zditm_scrapper = require("./scripts/zditm_scrapper");
-const MatrixReduce = require("./scripts/sam-mreducer");
+const zditm_scrapper = require("./../scripts/zditm_scrapper");
+const MatrixReduce = require("./../scripts/sam-mreducer");
 
 class Samanta {
 	constructor(pageAccessToken) {
