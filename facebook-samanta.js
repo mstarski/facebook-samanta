@@ -32,10 +32,10 @@ app.get("/", (req, res) => {
 	res.send("Samanta - a facebook messenger bot");
 });
 
-// Adds support for GET requests to our webhook [Verification Purposes]
+// Adds support for the webhook's GET method [Verification Purposes]
 app.get("/webhook", (req, res) => {
 	// Your verify token. Should be a random string.
-	let VERIFY_TOKEN = "reggaeshark";
+	let VERIFY_TOKEN = credentials["verify-token"];
 
 	// Parse the query params
 	let mode = req.query["hub.mode"];
@@ -54,24 +54,6 @@ app.get("/webhook", (req, res) => {
 			res.sendStatus(403);
 		}
 	}
-});
-
-//Github webhook
-app.post("/api/samanta-webhook", (req, res) => {
-	console.log(req.body);
-	res.send("Thanks for the push!");
-	exec("git pull origin master && pm2 restart facebook-samanta", function(
-		error,
-		stdout,
-		stderr
-	) {
-		if (error) {
-			console.error(`exec error: ${error}`);
-			return;
-		}
-		console.log(`stdout: ${stdout}`);
-		console.log(`stderr: ${stderr}`);
-	});
 });
 
 // Creates the endpoint for our webhook
@@ -119,6 +101,24 @@ app.post("/webhook", (req, res) => {
 		// Returns a '404 Not Found' if event is not from a page subscription
 		res.sendStatus(404);
 	}
+});
+
+//Github webhook
+app.post("/api/samanta-webhook", (req, res) => {
+	console.log(req.body);
+	res.send("Thanks for the push!");
+	exec("git pull origin master && pm2 restart facebook-samanta", function(
+		error,
+		stdout,
+		stderr
+	) {
+		if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		}
+		console.log(`stdout: ${stdout}`);
+		console.log(`stderr: ${stderr}`);
+	});
 });
 
 http.listen(
