@@ -12,8 +12,8 @@ const github = require("./webhooks/github");
 app.use(bodyParser.json());
 
 //Webhooks
-app.use("*", facebook);
-app.use("*", github);
+app.use("/", facebook);
+app.use("/", github);
 
 //Create Samanta Object that will response to user requests
 const Sam = new Samanta(credentials["page-access-token"]);
