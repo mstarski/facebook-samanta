@@ -22,7 +22,7 @@ app.use("/facebook", facebook);
 app.use("/github", github);
 
 // Creates the endpoint for our webhook
-app.post("/facebook/webhook", (req, res) => {
+app.post("/webhook", (req, res) => {
 	console.log("Im here at the post");
 	let body = req.body;
 	console.log(body);
