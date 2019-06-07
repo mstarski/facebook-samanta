@@ -1,6 +1,6 @@
 const credentials = require("../utils/get-credentials");
-const sendWeather = require("./scripts/sendWeather");
-const Samanta = require("./Samanta/Samanta");
+const sendWeather = require("../scripts/sendWeather");
+const Samanta = require("../Samanta/Samanta");
 
 module.exports = function(router) {
 	//Create Samanta Object that will response to user requests
