@@ -3,7 +3,7 @@ const router = express.Router();
 const { exec } = require("child_process");
 
 //Github webhook
-router.post("/api/samanta-webhook", (req, res) => {
+router.post("/samanta-webhook", (req, res) => {
 	console.log(req.body);
 	res.send("Thanks for the push!");
 	exec("git pull origin master && pm2 restart facebook-samanta", function(

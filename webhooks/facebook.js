@@ -31,6 +31,7 @@ router.get("/webhook", (req, res) => {
 
 // Creates the endpoint for our webhook
 router.post("/webhook", (req, res) => {
+	console.log("Im here!");
 	// Your verify token. Should be a random string.
 	let VERIFY_TOKEN = credentials["verify-token"];
 
