@@ -18,12 +18,13 @@ module.exports = function(Samanta, senderId, text = null, attachments = null) {
 			handler: Samanta.sendFacebookMessage,
 		},
 		{
-			condition: attachments && attachments[0].payload.url,
+			condition: attachments !== null && attachments[0].payload.url,
 			args: [senderId],
 			handler: Samanta.sendSticker,
 		},
 		{
-			condition: attachments && attachments[0].type === "location",
+			condition:
+				attachments !== null && attachments[0].type === "location",
 			args: [
 				senderId,
 				attachments[0].payload.coordinates.lat,
