@@ -18,11 +18,9 @@ module.exports = function(Samanta, text, attachments, senderId) {
 		},
 	];
 
-	for (let i = 0; i < avaliable_responses.length; i++) {
-		const { condition, handler } = avaliable_responses[i];
-		if (condition) {
-			return handler();
-		}
-		Samanta.messageUnknown(senderId);
-	}
+	const action = avaliable_responses.some(response => {
+		response.condition ? handler() : null;
+	});
+
+	if (!action) Samanta.messageUnknown(senderId);
 };
