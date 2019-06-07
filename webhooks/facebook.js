@@ -1,6 +1,7 @@
 const credentials = require("../utils/get-credentials");
 const sendWeather = require("../scripts/sendWeather");
 const Samanta = require("../Samanta/Samanta");
+const avaliableResponses = require("../Samanta/avaliable-responses");
 
 module.exports = function(router) {
 	//Create Samanta Object that will response to user requests
@@ -46,6 +47,7 @@ module.exports = function(router) {
 				let text = webhook_event.message.text;
 				let attachments = webhook_event.message.attachments;
 				console.log(entry);
+				console.log(avaliableResponses);
 				if (text) {
 					//Text based events
 					console.log(text);
