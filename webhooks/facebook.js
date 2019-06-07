@@ -1,6 +1,7 @@
 const credentials = require("../utils/get-credentials");
 const sendWeather = require("../scripts/sendWeather");
 const Samanta = require("../Samanta/Samanta");
+const avaliableResponses = require("../Samanta/avaliable-responses");
 
 module.exports = function(router) {
 	//Create Samanta Object that will response to user requests
@@ -46,20 +47,7 @@ module.exports = function(router) {
 				let text = webhook_event.message.text;
 				let attachments = webhook_event.message.attachments;
 				console.log(webhook_event);
-				if (text) {
-					console.log(webhook_event);
-					console.log(text);
-					Sam.sendFacebookMessage(text, senderId);
-				} else if (attachments[0].payload.url) {
-					Sam.sendSticker(senderId);
-				} else if (attachments[0].type === "location") {
-					console.log(attachments[0].payload.coordinates);
-					const lat = attachments[0].payload.coordinates.lat;
-					const long = attachments[0].payload.coordinates.long;
-					sendWeather(senderId, lat, long, Sam);
-				} else {
-					Sam.messageUnknown(senderId);
-				}
+				avaliableResponses(Sam, text, attachments, senderId);
 			});
 			// Returns a '200 OK' response to all requests
 			res.status(200).send("EVENT_RECEIVED");
