@@ -15,6 +15,8 @@ router.get("/webhook", (req, res) => {
 
 	// Checks if a token and mode is in the query string of the request
 	if (mode && token) {
+		console.log(token);
+		console.log(VERIFY_TOKEN);
 		// Checks the mode and token sent is correct
 		if (mode === "subscribe" && token === VERIFY_TOKEN) {
 			// Responds with the challenge token from the request
