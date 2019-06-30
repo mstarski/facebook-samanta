@@ -17,11 +17,9 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 				const $ = cheerio.load(response.data, {
 					normalizeWhitespace: true,
 				});
-				const direction = $("p")
-					.eq(6)
-					.text();
+				const direction = $("span.przyst_konc").text();
 				const departure = $("#najkursxhr").text();
-				return `-------------------\n*${direction}*\n*${departure}*\n-------------------`;
+				return `-------------------\n*Kierunek: ${direction}*\n*${departure}*\n-------------------`;
 			})
 			.catch(error => {
 				return "Nie wykryto połączenia :(";
