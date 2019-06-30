@@ -28,14 +28,17 @@ function zditm_scrap(stop_name, line_number, self, senderId) {
 			});
 	}
 
-	axios.all([getSchedule(0), getSchedule(1)]).then(
-		axios.spread((firstStop, secondStop) => {
-			const message = `${firstStop}\n${secondStop}`;
-			self.postTextMessage.message.text = message;
-			self.postTextMessage.recipient.id = senderId;
-			self.submit(self.postTextMessage);
-		})
-	);
+	axios
+		.all([getSchedule(0), getSchedule(1)])
+		.then(
+			axios.spread((firstStop, secondStop) => {
+				const message = `${firstStop}\n${secondStop}`;
+				self.postTextMessage.message.text = message;
+				self.postTextMessage.recipient.id = senderId;
+				self.submit(self.postTextMessage);
+			})
+		)
+		.catch(e => console.error("An error occured: " + e));
 }
 
 module.exports = (props, self, senderId) => {
