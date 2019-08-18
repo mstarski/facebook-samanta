@@ -17,9 +17,12 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 				.replace(/\s\s+/g, " ")
 				.split(" ");
 			if (cmd === "o") {
-				return ztm.ztm_quick_look(arg1, arg2);
+				const response = ztm.ztm_quick_look(arg1, arg2, Samanta);
+				Samanta.postTextMessage.recipient.id = senderId;
+				Samanta.postTextMessage.message.text = response;
+				Samanta.submit(Samanta.postTextMessage);
 			} else if (cmd === "t") {
-				return ztm.ztm_get_routes(arg1, arg2);
+				return ztm.ztm_get_routes(arg1, arg2, Samanta);
 			}
 
 			Samanta.messageUnknown(senderId);
