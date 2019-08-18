@@ -13,15 +13,16 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 		condition: actions.ZTM.indexOf(formattedText.substring(0, 3)) >= 0,
 		handler: () => {
 			//Get arguments to parse
-			const [_ztm, cmd, arg1, arg2] = formattedText
+			const [_ztm, flag, arg1, arg2] = formattedText
 				.replace(/\s\s+/g, " ")
 				.split(" ");
-			if (cmd === "o") {
+			if (flag === "o") {
 				const response = ztm.ztm_quick_look(arg1, arg2, Samanta);
+				console.log(response);
 				Samanta.postTextMessage.recipient.id = senderId;
 				Samanta.postTextMessage.message.text = response;
 				Samanta.submit(Samanta.postTextMessage);
-			} else if (cmd === "t") {
+			} else if (flag === "t") {
 				return ztm.ztm_get_routes(arg1, arg2, Samanta);
 			}
 		},
