@@ -1,4 +1,5 @@
 const zditm_scrapper = require("../scripts/zditm_scrapper");
+const ztm = require("../scripts/poznan-mpk-api");
 const actions = require("../definitions/actions");
 
 const scrapperInvokers = (Samanta, formattedText, senderId) => ({
@@ -11,8 +12,17 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 	ZTM: {
 		condition: actions.ZTM.indexOf(formattedText.substring(0, 3)) >= 0,
 		handler: () => {
-			const args = formattedText.split(" ");
-			console.log(args);
+			//Get arguments to parse
+			const [_ztm, cmd, arg1, arg2] = formattedText
+				.replace(/\s\s+/g, " ")
+				.split(" ");
+			if (cmd === "o") {
+				return ztm.ztm_quick_look(arg1, arg2);
+			} else if (cmd === "t") {
+				return ztm.ztm_get_routes(arg1, arg2);
+			}
+
+			Samanta.messageUnknown(senderId);
 		},
 	},
 });
