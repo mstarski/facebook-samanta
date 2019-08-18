@@ -11,7 +11,8 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 	ZTM: {
 		condition: actions.ZTM.indexOf(formattedText.substring(0, 3)) >= 0,
 		handler: () => {
-			console.log(formattedText);
+			const args = formattedText.split(" ");
+			console.log(args);
 		},
 	},
 });
