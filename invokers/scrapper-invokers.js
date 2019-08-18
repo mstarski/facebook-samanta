@@ -14,7 +14,7 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 		handler: async () => {
 			//Get arguments to parse
 			const [flag, arg1, arg2] = formattedText
-				.replace(/\s\s+/g, " ")
+				.replace(/\s\s+/g, "")
 				.split(",")
 				.slice(1);
 			console.log(flag, arg1, arg2);
