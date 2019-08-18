@@ -13,7 +13,7 @@ async function ztm_quick_look(stop, line) {
 		)
 		.catch(e => console.error(e));
 
-	let message = `Linia: ${data.line}\n`;
+	let message = `Linia: ${data[0].line}\n`;
 	for (const arrival of data) {
 		message += `*Kierunek:${arrival.final_destination}*\n ${arrival.hour}:${
 			arrival.minutes
