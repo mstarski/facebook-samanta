@@ -8,6 +8,12 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 			zditm_scrapper(formattedText.substring(5), Samanta, senderId);
 		},
 	},
+	ZTM: {
+		condition: actions.ZTM.indexOf(formattedText.substring(0, 3)) >= 0,
+		handler: () => {
+			console.log(formattedText);
+		},
+	},
 });
 
 module.exports = scrapperInvokers;

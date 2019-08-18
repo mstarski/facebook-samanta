@@ -35,6 +35,7 @@ const actions = {
 	LS: ["ls"],
 	MATRIX: ["macierz"],
 	ZDITM: ["zditm"],
+	ZTM: ["ztm"],
 	LOVE: ["kocham cię", "kocham cie", "i love you", "愛している"],
 	JOKE: ["opowiedz żart", "opowiedz zart", "joke", "zart", "żart"],
 };
