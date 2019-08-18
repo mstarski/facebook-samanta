@@ -2,7 +2,6 @@ const axios = require("axios");
 const qs = require("qs");
 
 async function ztm_quick_look(stop, line) {
-	let message = "";
 	const { data } = await axios
 		.get(
 			`https://hanabi.sealcode.org/poznan-mpk-api/api/quick_look?${qs.stringify(
@@ -13,8 +12,10 @@ async function ztm_quick_look(stop, line) {
 			)}`
 		)
 		.catch(e => console.error(e));
+
+	let message = `Linia: ${data.line}\n`;
 	for (const arrival of data) {
-		message += `*Kierunek:${arrival.final_destination}\n* ${arrival.hour}:${
+		message += `*Kierunek:${arrival.final_destination}*\n ${arrival.hour}:${
 			arrival.minutes
 		} ${
 			arrival.is_today ? "" : `(${arrival.day})`
