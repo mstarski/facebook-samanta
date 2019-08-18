@@ -13,7 +13,7 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 		condition: actions.ZTM.indexOf(formattedText.substring(0, 3)) >= 0,
 		handler: async () => {
 			//Get arguments to parse
-			const args = formattedText.substring(3).split(",");
+			let args = formattedText.substring(3).split(",");
 			args = args.map(arg => arg.replace(/\s\s+\g/, ""));
 			const [flag, arg1, arg2] = args;
 
