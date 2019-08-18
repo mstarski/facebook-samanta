@@ -24,8 +24,6 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 			} else if (cmd === "t") {
 				return ztm.ztm_get_routes(arg1, arg2, Samanta);
 			}
-
-			Samanta.messageUnknown(senderId);
 		},
 	},
 });
