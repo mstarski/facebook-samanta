@@ -15,7 +15,7 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 			//Get arguments to parse
 			const [_ztm, flag, arg1, arg2] = formattedText
 				.replace(/\s\s+/g, " ")
-				.split(" ");
+				.split(",");
 			if (flag === "o") {
 				const response = await ztm.ztm_quick_look(arg1, arg2, Samanta);
 				console.log(response);
