@@ -2,7 +2,7 @@ const axios = require("axios");
 const qs = require("qs");
 
 async function ztm_quick_look(stop, line) {
-	let message;
+	let message = "";
 	const { data } = await axios
 		.get(
 			`https://hanabi.sealcode.org/poznan-mpk-api/api/quick_look?${qs.stringify(
