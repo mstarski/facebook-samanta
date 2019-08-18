@@ -13,11 +13,11 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 		condition: actions.ZTM.indexOf(formattedText.substring(0, 3)) >= 0,
 		handler: async () => {
 			//Get arguments to parse
-			const [flag, arg1, arg2] = formattedText
-				.replace(/\s\s+/g, "")
-				.split(",")
-				.slice(1);
-			console.log(flag, arg1, arg2);
+			const args = formattedText.substring(3).split(",");
+			args = args.map(arg => arg.replace(/\s\s+\g/, ""));
+			const [flag, arg1, arg2] = args;
+
+			console.log(args);
 			if (flag === "o") {
 				const response = await ztm.ztm_quick_look(arg1, arg2, Samanta);
 				console.log(response);
