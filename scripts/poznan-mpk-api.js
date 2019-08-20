@@ -54,14 +54,14 @@ async function ztm_get_routes(from, to) {
 					line,
 				} = action;
 				route_total_journey_time += journey_time;
-				return `\nZ przystanku *${stop_name}*, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
-					is_today ? "" : day
+				return `Z przystanku *${stop_name}*, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
+					is_today ? "" : `*(${day})* `
 				}w kierunku ${final_destination} i wysiądź na przystanku *${capitalize(
 					dest
 				)}*\n${index !== route.length - 1 ? "=>" : ""} `;
 			})
 			.join("\n");
-		response += `TRASA #${route_index + 1}${route_info}`;
+		response += `TRASA #${route_index + 1}\n${route_info}`;
 		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min, Liczba przesiadek: ${route.length -
 			1}\n=============================\n`;
 		route_index++;
