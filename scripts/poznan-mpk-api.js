@@ -39,7 +39,7 @@ async function ztm_get_routes(from, to) {
 	for (let route of data) {
 		let route_total_journey_time = 0;
 		const route_info = route
-			.map(action => {
+			.map((action, index) => {
 				const {
 					day,
 					minutes,
@@ -54,14 +54,13 @@ async function ztm_get_routes(from, to) {
 				route_total_journey_time += journey_time;
 				return `Z przystanku ${stop_name}, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
 					is_today ? "" : day
-				}w kierunku ${final_destination}) i wysiądź na przystanku ${dest}`;
+				}w kierunku ${final_destination} i wysiądź na przystanku ${dest.toUpperCase()}\n${
+					index !== route.length - 1 ? "=>" : ""
+				} `;
 			})
 			.join("\n");
 		response += route_info;
-		response +=
-			"Całkowity czas jazdy: " +
-			route_total_journey_time.toString() +
-			"=============================\n";
+		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()}\n=============================\n`;
 	}
 	return response;
 }
