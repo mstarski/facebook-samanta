@@ -27,6 +27,7 @@ async function ztm_quick_look(stop, line) {
 
 async function ztm_get_routes(from, to) {
 	let response = "";
+	let route_index = 1;
 	const { data } = await axios
 		.get(
 			`https://hanabi.sealcode.org/poznan-mpk-api/api/get_routes?${qs.stringify(
@@ -39,7 +40,6 @@ async function ztm_get_routes(from, to) {
 		.catch(e => console.error(e));
 	for (let route of data) {
 		let route_total_journey_time = 0;
-		let route_index = 1;
 		const route_info = route
 			.map((action, index) => {
 				const {
@@ -54,18 +54,16 @@ async function ztm_get_routes(from, to) {
 					line,
 				} = action;
 				route_total_journey_time += journey_time;
-				return `TRASA #${route_index +
-					1}\nZ przystanku *${stop_name}*, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
+				return `\nZ przystanku *${stop_name}*, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
 					is_today ? "" : day
 				}w kierunku ${final_destination} i wysiądź na przystanku *${capitalize(
 					dest
 				)}*\n${index !== route.length - 1 ? "=>" : ""} `;
 			})
 			.join("\n");
-		response += route_info;
-		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min, Liczba przesiadek: ${
-			route.length
-		}\n=============================\n`;
+		response += `TRASA #${route_index + 1}${route_info}`;
+		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min, Liczba przesiadek: ${route.length -
+			1}\n=============================\n`;
 		route_index++;
 	}
 	return response;
