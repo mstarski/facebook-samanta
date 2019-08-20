@@ -55,16 +55,18 @@ async function ztm_get_routes(from, to) {
 				} = action;
 				route_total_journey_time += journey_time;
 				return `TRASA #${route_index +
-					1}\nZ przystanku ${stop_name}, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
+					1}\nZ przystanku *${stop_name}*, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
 					is_today ? "" : day
-				}w kierunku ${final_destination} i wysiądź na przystanku ${capitalize(
+				}w kierunku ${final_destination} i wysiądź na przystanku *${capitalize(
 					dest
-				)}\n${index !== route.length - 1 ? "=>" : ""} `;
+				)}*\n${index !== route.length - 1 ? "=>" : ""} `;
 			})
 			.join("\n");
 		response += route_info;
-		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min\n=============================\n`;
-		i++;
+		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min, Liczba przesiadek: ${
+			route.length
+		}\n=============================\n`;
+		route_index++;
 	}
 	return response;
 }
