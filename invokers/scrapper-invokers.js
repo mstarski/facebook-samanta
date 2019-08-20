@@ -1,6 +1,7 @@
 const zditm_scrapper = require("../scripts/zditm_scrapper");
 const ztm = require("../scripts/poznan-mpk-api");
 const actions = require("../definitions/actions");
+const capitalize = require("../utils/capitalize");
 
 const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 	ZDITM: {

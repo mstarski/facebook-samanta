@@ -1,5 +1,6 @@
 const axios = require("axios");
 const qs = require("qs");
+const capitalize = require("../utils/capitalize");
 
 async function ztm_quick_look(stop, line) {
 	const { data } = await axios
@@ -52,15 +53,16 @@ async function ztm_get_routes(from, to) {
 					line,
 				} = action;
 				route_total_journey_time += journey_time;
-				return `Z przystanku ${stop_name}, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
+				return `TRASA #${index +
+					1}\nZ przystanku ${stop_name}, wsiądź w linię ${line} o godzinie ${hour}:${minutes} ${
 					is_today ? "" : day
-				}w kierunku ${final_destination} i wysiądź na przystanku ${dest.toUpperCase()}\n${
-					index !== route.length - 1 ? "=>" : ""
-				} `;
+				}w kierunku ${final_destination} i wysiądź na przystanku ${capitalize(
+					dest
+				)}\n${index !== route.length - 1 ? "=>" : ""} `;
 			})
 			.join("\n");
 		response += route_info;
-		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()}\n=============================\n`;
+		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min\n=============================\n`;
 	}
 	return response;
 }
