@@ -16,13 +16,18 @@ const scrapperInvokers = (Samanta, formattedText, senderId) => ({
 			let args = formattedText.substring(3).split(",");
 			args = args.map(arg => arg.trim());
 			const [flag, arg1, arg2] = args;
+			let response;
 
 			console.log(args);
 
 			if (flag === "o") {
-				const response = await ztm.ztm_quick_look(arg1, arg2, Samanta);
+				response = await ztm
+					.ztm_quick_look(arg1, arg2, Samanta)
+					.catch(e => console.error(e));
 			} else if (flag === "t") {
-				const response = await ztm.ztm_get_routes(arg1, arg2, Samanta);
+				response = await ztm
+					.ztm_get_routes(arg1, arg2, Samanta)
+					.catch(e => console.error(e));
 			}
 
 			console.log(response);
