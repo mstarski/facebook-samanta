@@ -61,7 +61,7 @@ async function ztm_get_routes(from, to) {
 				)}*\n${index !== route.length - 1 ? "=>" : ""} `;
 			})
 			.join("\n");
-		response += `TRASA #${route_index + 1}\n${route_info}`;
+		response += `TRASA #${route_index}\n${route_info}`;
 		response += `Całkowity czas jazdy: ${route_total_journey_time.toString()} min, Liczba przesiadek: ${route.length -
 			1}\n=============================\n`;
 		route_index++;
